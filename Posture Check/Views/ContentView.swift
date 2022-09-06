@@ -17,6 +17,7 @@ struct ContentView: View {
     @State var selection = 0
     @StateObject var questionnaires = Questionnaires()
     @StateObject var exercises = Exercises()
+    @StateObject var notifications = Notifications()
     
     var body: some View {
         TabView(selection: $selection) {
@@ -48,6 +49,7 @@ struct ContentView: View {
         }
         .environmentObject(exercises)
         .environmentObject(questionnaires)
+        .environmentObject(notifications)
     }
 }
 
