@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		88582B8828BAD04300FA565F /* Posture_CheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88582B8728BAD04300FA565F /* Posture_CheckApp.swift */; };
+		88582B8A28BAD04300FA565F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88582B8928BAD04300FA565F /* ContentView.swift */; };
+		88582B8C28BAD04400FA565F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88582B8B28BAD04400FA565F /* Assets.xcassets */; };
+		88582B8F28BAD04400FA565F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88582B8E28BAD04400FA565F /* Preview Assets.xcassets */; };
+		88667C0E28BD2289003816E0 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88667C0D28BD2289003816E0 /* ExerciseListView.swift */; };
+		88667C1028BD23FE003816E0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88667C0F28BD23FE003816E0 /* ProfileView.swift */; };
+		88667C1228BD25E2003816E0 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88667C1128BD25E2003816E0 /* ExerciseDetailView.swift */; };
+		88667C1428BD2738003816E0 /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88667C1328BD2738003816E0 /* QuestionnaireView.swift */; };
+		886C84C928C0626E000D3973 /* DeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886C84C828C0626E000D3973 /* DeveloperView.swift */; };
+		8888CE9C28C2AB48008009A0 /* Questionnaires.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8888CE9B28C2AB48008009A0 /* Questionnaires.swift */; };
+		8888CEA128C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8888CEA028C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift */; };
+		8888CEA628C2F506008009A0 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8888CEA528C2F506008009A0 /* Keys.swift */; };
+		88AA052628C79D5400395A97 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA052528C79D5400395A97 /* Exercises.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		88582B8428BAD04300FA565F /* Posture Check.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Posture Check.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88582B8728BAD04300FA565F /* Posture_CheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posture_CheckApp.swift; sourceTree = "<group>"; };
+		88582B8928BAD04300FA565F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		88582B8B28BAD04400FA565F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		88582B8E28BAD04400FA565F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		88667C0D28BD2289003816E0 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
+		88667C0F28BD23FE003816E0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		88667C1128BD25E2003816E0 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
+		88667C1328BD2738003816E0 /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
+		886C84C828C0626E000D3973 /* DeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperView.swift; sourceTree = "<group>"; };
+		8888CE9B28C2AB48008009A0 /* Questionnaires.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaires.swift; sourceTree = "<group>"; };
+		8888CEA028C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FIleManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		8888CEA528C2F506008009A0 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		88AA052528C79D5400395A97 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Exercises.swift; path = "Posture Check/Views/Exercises.swift"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		88582B8128BAD04300FA565F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		88582B7B28BAD04300FA565F = {
+			isa = PBXGroup;
+			children = (
+				88582B8628BAD04300FA565F /* Posture Check */,
+				88582B8528BAD04300FA565F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		88582B8528BAD04300FA565F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88582B8428BAD04300FA565F /* Posture Check.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		88582B8628BAD04300FA565F /* Posture Check */ = {
+			isa = PBXGroup;
+			children = (
+				88582B8728BAD04300FA565F /* Posture_CheckApp.swift */,
+				8888CE9D28C2AC66008009A0 /* Model */,
+				8888CE9A28C2AB14008009A0 /* Views */,
+				8888CEA228C2B4FE008009A0 /* Extensions */,
+				88582B8B28BAD04400FA565F /* Assets.xcassets */,
+				88582B8D28BAD04400FA565F /* Preview Content */,
+			);
+			path = "Posture Check";
+			sourceTree = "<group>";
+		};
+		88582B8D28BAD04400FA565F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				88582B8E28BAD04400FA565F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8888CE9A28C2AB14008009A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88582B8928BAD04300FA565F /* ContentView.swift */,
+				886C84C828C0626E000D3973 /* DeveloperView.swift */,
+				88667C0D28BD2289003816E0 /* ExerciseListView.swift */,
+				88667C1128BD25E2003816E0 /* ExerciseDetailView.swift */,
+				88667C0F28BD23FE003816E0 /* ProfileView.swift */,
+				88667C1328BD2738003816E0 /* QuestionnaireView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8888CE9D28C2AC66008009A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				88AA052528C79D5400395A97 /* Exercises.swift */,
+				8888CEA528C2F506008009A0 /* Keys.swift */,
+				8888CE9B28C2AB48008009A0 /* Questionnaires.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8888CEA228C2B4FE008009A0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8888CEA028C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		88582B8328BAD04300FA565F /* Posture Check */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88582B9228BAD04400FA565F /* Build configuration list for PBXNativeTarget "Posture Check" */;
+			buildPhases = (
+				88582B8028BAD04300FA565F /* Sources */,
+				88582B8128BAD04300FA565F /* Frameworks */,
+				88582B8228BAD04300FA565F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Posture Check";
+			productName = "Posture Check";
+			productReference = 88582B8428BAD04300FA565F /* Posture Check.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		88582B7C28BAD04300FA565F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					88582B8328BAD04300FA565F = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = 88582B7F28BAD04300FA565F /* Build configuration list for PBXProject "Posture Check" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 88582B7B28BAD04300FA565F;
+			productRefGroup = 88582B8528BAD04300FA565F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				88582B8328BAD04300FA565F /* Posture Check */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		88582B8228BAD04300FA565F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88582B8F28BAD04400FA565F /* Preview Assets.xcassets in Resources */,
+				88582B8C28BAD04400FA565F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		88582B8028BAD04300FA565F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88667C1028BD23FE003816E0 /* ProfileView.swift in Sources */,
+				88667C1228BD25E2003816E0 /* ExerciseDetailView.swift in Sources */,
+				88582B8A28BAD04300FA565F /* ContentView.swift in Sources */,
+				88667C0E28BD2289003816E0 /* ExerciseListView.swift in Sources */,
+				88667C1428BD2738003816E0 /* QuestionnaireView.swift in Sources */,
+				8888CE9C28C2AB48008009A0 /* Questionnaires.swift in Sources */,
+				8888CEA128C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift in Sources */,
+				886C84C928C0626E000D3973 /* DeveloperView.swift in Sources */,
+				88582B8828BAD04300FA565F /* Posture_CheckApp.swift in Sources */,
+				8888CEA628C2F506008009A0 /* Keys.swift in Sources */,
+				88AA052628C79D5400395A97 /* Exercises.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		88582B9028BAD04400FA565F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		88582B9128BAD04400FA565F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		88582B9328BAD04400FA565F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Posture Check/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "riveraRiveraLuis.Posture-Check";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		88582B9428BAD04400FA565F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Posture Check/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "riveraRiveraLuis.Posture-Check";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		88582B7F28BAD04300FA565F /* Build configuration list for PBXProject "Posture Check" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88582B9028BAD04400FA565F /* Debug */,
+				88582B9128BAD04400FA565F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88582B9228BAD04400FA565F /* Build configuration list for PBXNativeTarget "Posture Check" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88582B9328BAD04400FA565F /* Debug */,
+				88582B9428BAD04400FA565F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 88582B7C28BAD04300FA565F /* Project object */;
+}
