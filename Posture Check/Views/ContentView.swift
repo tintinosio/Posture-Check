@@ -14,12 +14,14 @@
 import SwiftUI
 
 struct ContentView: View {
+        
     @State var selection = 0
     @StateObject var questionnaires = Questionnaires()
     @StateObject var exercises = Exercises()
     @StateObject var notifications = Notifications()
-    
+            
     var body: some View {
+        
         TabView(selection: $selection) {
             ExerciseListView()
                 .tabItem {
@@ -50,9 +52,14 @@ struct ContentView: View {
         .environmentObject(exercises)
         .environmentObject(questionnaires)
         .environmentObject(notifications)
+        
     }
+    
 }
 
+
+// MARK: - Preview
+// MARK: -
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

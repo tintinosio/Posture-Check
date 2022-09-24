@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E653B6B28DEE46A001448A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E653B6A28DEE46A001448A1 /* AppDelegate.swift */; };
+		7E653B6D28DEE620001448A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E653B6C28DEE620001448A1 /* Constants.swift */; };
+		7E653B7028DEE8EF001448A1 /* OtherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E653B6F28DEE8EF001448A1 /* OtherExtensions.swift */; };
 		88505F4228C7BD7E0011BD7F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88505F4128C7BD7E0011BD7F /* Notifications.swift */; };
 		88582B8828BAD04300FA565F /* Posture_CheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88582B8728BAD04300FA565F /* Posture_CheckApp.swift */; };
 		88582B8A28BAD04300FA565F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88582B8928BAD04300FA565F /* ContentView.swift */; };
@@ -24,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E653B6A28DEE46A001448A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7E653B6C28DEE620001448A1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7E653B6F28DEE8EF001448A1 /* OtherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherExtensions.swift; sourceTree = "<group>"; };
 		88505F4128C7BD7E0011BD7F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = "Posture Check/Views/Notifications.swift"; sourceTree = SOURCE_ROOT; };
 		88582B8428BAD04300FA565F /* Posture Check.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Posture Check.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88582B8728BAD04300FA565F /* Posture_CheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posture_CheckApp.swift; sourceTree = "<group>"; };
@@ -52,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E653B6E28DEE75A001448A1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7E653B6C28DEE620001448A1 /* Constants.swift */,
+			);
+			name = Helper;
+			path = ../Helper;
+			sourceTree = "<group>";
+		};
 		88582B7B28BAD04300FA565F = {
 			isa = PBXGroup;
 			children = (
@@ -72,8 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				88582B8728BAD04300FA565F /* Posture_CheckApp.swift */,
+				7E653B6A28DEE46A001448A1 /* AppDelegate.swift */,
 				8888CE9D28C2AC66008009A0 /* Model */,
 				8888CE9A28C2AB14008009A0 /* Views */,
+				7E653B6E28DEE75A001448A1 /* Helper */,
 				8888CEA228C2B4FE008009A0 /* Extensions */,
 				88582B8B28BAD04400FA565F /* Assets.xcassets */,
 				88582B8D28BAD04400FA565F /* Preview Content */,
@@ -117,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				8888CEA028C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift */,
+				7E653B6F28DEE8EF001448A1 /* OtherExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -197,10 +215,13 @@
 				88582B8A28BAD04300FA565F /* ContentView.swift in Sources */,
 				88667C0E28BD2289003816E0 /* ExerciseListView.swift in Sources */,
 				88667C1428BD2738003816E0 /* QuestionnaireView.swift in Sources */,
+				7E653B7028DEE8EF001448A1 /* OtherExtensions.swift in Sources */,
 				8888CE9C28C2AB48008009A0 /* Questionnaires.swift in Sources */,
 				8888CEA128C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift in Sources */,
+				7E653B6B28DEE46A001448A1 /* AppDelegate.swift in Sources */,
 				886C84C928C0626E000D3973 /* DeveloperView.swift in Sources */,
 				88582B8828BAD04300FA565F /* Posture_CheckApp.swift in Sources */,
+				7E653B6D28DEE620001448A1 /* Constants.swift in Sources */,
 				8888CEA628C2F506008009A0 /* Keys.swift in Sources */,
 				88AA052628C79D5400395A97 /* Exercises.swift in Sources */,
 			);
