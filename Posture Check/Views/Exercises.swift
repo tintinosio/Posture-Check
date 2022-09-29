@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 class Exercise: Codable, Equatable, Identifiable {
     var id = UUID()
@@ -32,23 +33,6 @@ class Exercise: Codable, Equatable, Identifiable {
     static func == (lhs: Exercise, rhs: Exercise) -> Bool {
         lhs.id == rhs.id
     }
-    
-    
-    func markIsUnlocked(exercise:Exercise)
-{
-     guard let index = exercise.firstIndex(of:exercise)
-     else
-     {
-        
-     fatalError("Couldn't find the exercises")
-     }
-     
-     objectWillchange.send()
-     
-     exercises[index].isUnlocked=true
-}
-
-
     
     static var example: Exercise {
         Exercise(name: "Test Exercise", isUnlocked: true, type: .basic, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum arcu vitae elementum curabitur vitae nunc sed. Sit amet cursus sit amet dictum sit. Habitant morbi tristique senectus et. Nunc consequat interdum varius sit amet mattis. Arcu cursus euismod quis viverra nibh. Nisl purus in mollis nunc sed id. Auctor urna nunc id cursus metus aliquam. Dolor purus non enim praesent elementum facilisis leo. Cras semper auctor neque vitae tempus quam pellentesque nec nam. Convallis tellus id interdum velit laoreet id donec. Sed viverra tellus in hac habitasse. Odio ut sem nulla pharetra diam sit amet nisl suscipit. Id ornare arcu odio ut sem nulla. Proin fermentum leo vel orci porta non pulvinar. Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque. A arcu cursus vitae congue mauris rhoncus aenean vel. Nunc faucibus a pellentesque sit. Vel quam elementum pulvinar etiam. Est ultricies integer quis auctor elit sed. Lacus sed viverra tellus in hac. Mi ipsum faucibus vitae aliquet nec ullamcorper sit amet. Purus non enim praesent elementum facilisis leo vel. Vitae ultricies leo integer malesuada nunc vel risus commodo. Mollis aliquam ut porttitor leo a. Nisl vel pretium lectus quam id.")
@@ -99,5 +83,14 @@ class Exercise: Codable, Equatable, Identifiable {
     
     func save() {
         
+    }
+    
+    func markIsUnlocked(exercise: Exercise){
+        guard let index = exercises.firstIndex(of: exercise) else {
+            fatalError("Couldn't find the exercises")
+        }
+        
+        objectWillChange.send()
+        exercises[index].isUnlocked = true
     }
 }
