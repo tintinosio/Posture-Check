@@ -39,18 +39,25 @@ class Exercise: Codable, Equatable, Identifiable {
 }
 
 @MainActor class Exercises: ObservableObject {
-    @Published private(set) var exercises: [Exercise]
+    @Published private(set) var exercises: [Exercise] {
+        didSet {
+            save()
+        }
+    }
+    
+    var available: [Exercise] {
+        exercises.filter { $0.isUnlocked }
+    }
     
     let savePath = FileManager.documentsDirectory.appendingPathComponent(Keys.exercises)
     
-    
-    init() { // Hay un typo strech -> stretch
+    init() {
         exercises = [
             Exercise(name: "Neck Flexion", isUnlocked: true, type: .basic, description: "Doble el cuello hacia abajo como si quisiera mirar el piso. Coloque las manos en la parte de atrás de la cabeza y empuje levemente hacia abajo la cabeza hasta que sienta un leve estiramiento en la parte de atrás del cuello. Mantén esta posición por 15 a 30 segundos y repita de 3 a 5 veces."),
             Exercise(name: "Chin tuck", isUnlocked: true, type: .basic, description: "Aplane la curvatura de la parte de atrás del cuello mientras acerca la barbilla a la parte delantera de su cuello. Mantenga la posición 3 segundos. Repite 10 a 15 veces."),
-            Exercise(name: "Trapezius stretch", isUnlocked: false, type: .basic, description: "Con el brazo derecho al lado del cuerpo, debe alcanzar sobre la cabeza con la mano izquierda la oreja derecha. Hale cuidadosamente ese lado de la cabeza hasta sentir un estiramiento en su trapecio, como si deseara tocar su hombro derecho con la oreja izquierda. Sostenga por 15 a 30 segundos y repita de 3 a 5 veces. Haga lo mismo en el lado opuesto."),
-            Exercise(name: "Cervical relaxation ", isUnlocked: false, type: .basic, description: "Comience mirando hacia adelante, luego doble el cuello como si quisiera mirar al piso o llevar la barbilla hacia el pecho. Sostén la posición por 3 segundos y luego regresa la cabeza a la posición inicial. El movimiento debe ser lento y rítmico. Repite de 10 a 15 veces."),
-            Exercise(name: "Head rotation and Chin tuck", isUnlocked: false, type: .basic, description: "Aplane la curvatura de la parte de atrás del cuello mientras acerca la barbilla a la parte delantera de su cuello. Luego rote su cabeza hacia un lado hasta sentir estiramiento en el lado contrario hacia donde giró y realice hacia el otro lado. Puede utilizar la punta de sus dedos para orientar el movimiento. Mantenga la posición de 5 a 10 segundos. Repite 5 a 10 veces."),
+            Exercise(name: "Trapezius stretch", isUnlocked: true, type: .basic, description: "Con el brazo derecho al lado del cuerpo, debe alcanzar sobre la cabeza con la mano izquierda la oreja derecha. Hale cuidadosamente ese lado de la cabeza hasta sentir un estiramiento en su trapecio, como si deseara tocar su hombro derecho con la oreja izquierda. Sostenga por 15 a 30 segundos y repita de 3 a 5 veces. Haga lo mismo en el lado opuesto."),
+            Exercise(name: "Cervical relaxation ", isUnlocked: true, type: .basic, description: "Comience mirando hacia adelante, luego doble el cuello como si quisiera mirar al piso o llevar la barbilla hacia el pecho. Sostén la posición por 3 segundos y luego regresa la cabeza a la posición inicial. El movimiento debe ser lento y rítmico. Repite de 10 a 15 veces."),
+            Exercise(name: "Head rotation and Chin tuck", isUnlocked: true, type: .basic, description: "Aplane la curvatura de la parte de atrás del cuello mientras acerca la barbilla a la parte delantera de su cuello. Luego rote su cabeza hacia un lado hasta sentir estiramiento en el lado contrario hacia donde giró y realice hacia el otro lado. Puede utilizar la punta de sus dedos para orientar el movimiento. Mantenga la posición de 5 a 10 segundos. Repite 5 a 10 veces."),
             Exercise(name: "Side bending", isUnlocked: true, type: .basic, description: "Llevando ambos hombros hacia abajo y hacia atrás, comience a mirar hacia arriba con toda la cabeza en un movimiento lento y rítmico. Sostenga por 3 segundos y vuelva a la posición inicial. Haga esto 10 a 15 veces."),
             Exercise(name: "Upper back stretch", isUnlocked: true, type: .basic, description: "Arrodíllate delante de una silla y coloca las manos sobre la silla con las palmas hacia abajo y el brazo completamente estirado. Baje el pecho hacia el suelo hasta que sienta estiramiento en la parte alta de la espalda y cerca de las axilas. Sostén la posición de 15 a 30 segundos y repita de 3 a 5 veces."),
             Exercise(name: "Cervical Rotation", isUnlocked: true, type: .basic, description: "Comienza mirando hacia adelante y luego gira la cabeza hacia el lado derecho. Sostén la posición por 3 segundos y regresa a la posición inicial. Luego repite el movimiento girando la cabeza hacia el lado izquierdo. Sostén la posición por 3 segundos y vuelve a la posición inicial. Repite el movimiento de 10 a 15 veces en cada lado"),
@@ -67,5 +74,13 @@ class Exercise: Codable, Equatable, Identifiable {
             Exercise(name: "Chest expand", isUnlocked: false, type: .advanced, description: "arado con ambos pies a lo ancho de los hombros, cruce ambos brazos a nivel de las muñecas frente a su cadera. Inhale profundamente mientras abduce ambos brazos, como si estuviera abriendo unas alas, hasta que las manos se encuentren en la parte superior de su cabeza. Sostenga 3 segundos. Exhale lentamente mientras adduce los brazos, como si cerrara las alas, hasta llegar a la posición inicial. Repita 10 veces."),
             Exercise(name: "Scapular in W", isUnlocked: false, type: .advanced, description: "Parado o sentado con la espalda despegada del espaldar de la silla, abra sus brazos formando una W con las palmas mirando hacia al frente. En esta posición lleve ambas escápulas hacia atrás como si deseara juntarlas, sostenga por 3 segundos y vuelva a la posición inicial. El movimiento debe ser rítmico y controlado. Repita esto 10 a 15 veces."),
         ]
+    }
+    
+    func load() {
+        
+    }
+    
+    func save() {
+        
     }
 }

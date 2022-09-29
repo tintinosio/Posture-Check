@@ -18,6 +18,7 @@ struct ContentView: View {
     @StateObject var questionnaires = Questionnaires()
     @StateObject var exercises = Exercises()
     @StateObject var notifications = Notifications()
+    @StateObject var appSettings = AppSettings()
     
     var body: some View {
         TabView(selection: $selection) {
@@ -34,13 +35,14 @@ struct ContentView: View {
                 .tag(1)
             
             QuestionnaireView()
+                .badge(questionnaires.isAnyQuestionnaireAvailable() ? "!" : "")
                 .tabItem {
                     Label("Questionares", systemImage: "questionmark.circle.fill")
                 }
                 .tag(2)
             
             if (TARGET_OS_SIMULATOR != 0) {
-                DeveloperView()
+                DeveloperView(accentColor: appSettings.appAccent)
                     .tabItem {
                         Label("Developer Mode", systemImage: "hammer.circle")
                     }
@@ -50,6 +52,16 @@ struct ContentView: View {
         .environmentObject(exercises)
         .environmentObject(questionnaires)
         .environmentObject(notifications)
+        .environmentObject(appSettings)
+        .accentColor(appSettings.appAccent)
+        .onAppear { // NOTE: This code should be asked on a earlier view of the app and not here.
+//            notifications.requestForAuthorization()
+            
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                notifications.generateNotifications()
+//            }
+            
+        }
     }
 }
 

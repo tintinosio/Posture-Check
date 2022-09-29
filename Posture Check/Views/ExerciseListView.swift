@@ -18,13 +18,11 @@ struct ExerciseListView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(exercises.exercises, id: \.id) { exercise in
-                    NavigationLink {
-                        ExerciseDetailView(exercise: exercise) 
-                    } label: {
-                        Text(exercise.name)
-                    }
+            Group {
+                if showAsGrid {
+                    GridView(exercises: exercises.exercises)
+                } else {
+                    ListView(exercises: exercises.exercises)
                 }
             }
             .navigationTitle("Exercise")
@@ -39,9 +37,107 @@ struct ExerciseListView: View {
     }
 }
 
+struct ListView: View {
+    let exercises: [Exercise]
+    @State private var searchText = ""
+    
+    var filteredExercises: [Exercise] {
+        if searchText.isEmpty {
+            return exercises
+        } else {
+            return exercises.filter { $0.name.localizedCaseInsensitiveContains(searchText)}
+        }
+    }
+    var body: some View {
+        List {
+            ForEach(filteredExercises) { exercise in
+                NavigationLink {
+                    ExerciseDetailView(exercise: exercise)
+                } label: {
+                    HStack {
+                        Text(exercise.name)
+                        
+                        Spacer()
+                        
+                        if !exercise.isUnlocked {
+                            Image(systemName: "lock")
+                                .scaledToFit()
+                                .foregroundColor(.primary)
+                        }
+                    }
+                }
+                .disabled(!exercise.isUnlocked)
+            }
+        }
+        .searchable(text: $searchText, prompt: "Search exercises")
+    }
+}
+
+struct GridView: View {
+    let exercises: [Exercise]
+    let columns = [
+        GridItem(.adaptive(minimum: 150))
+//        GridItem(.flexible()),
+//        GridItem(.flexible())
+    ]
+    
+    @State private var searchText = ""
+    
+    var filteredExercises: [Exercise] {
+        if searchText.isEmpty {
+            return exercises
+        } else {
+            return exercises.filter { $0.name.localizedCaseInsensitiveContains(searchText)}
+        }
+    }
+        
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: columns) {
+                ForEach(filteredExercises) { exercise in
+                    NavigationLink {
+                        ExerciseDetailView(exercise: exercise)
+                    } label: {
+                        VStack {
+                            ZStack {
+                                Image(exercise.icon)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                    .padding([.top, .horizontal], 5)
+//                                    .frame(width: 175)
+                                
+                                if !exercise.isUnlocked {
+                                    Image(systemName: "lock")
+                                        .font(.largeTitle)
+                                        .foregroundColor(.primary)
+                                }
+                            }
+                            
+                            Text(exercise.name)
+//                                .font(.title3)
+                                .foregroundColor(.white)
+                                .padding(.bottom)
+                        }
+//                        .frame(height: 175)
+                        .background(.indigo)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .padding()
+                    }
+                    .disabled(!exercise.isUnlocked)
+                }
+//                .searchable(text: $searchText, prompt: "Search exercises")
+            }
+            .padding(.horizontal)
+        }
+    }
+}
+
+
+
 struct ExerciseListView_Previews: PreviewProvider {
     static var previews: some View {
-            ExerciseListView()
+        ExerciseListView()
             .environmentObject(Exercises())
     }
 }
