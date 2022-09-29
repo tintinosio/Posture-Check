@@ -21,6 +21,7 @@
 		8888CEA128C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8888CEA028C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift */; };
 		8888CEA628C2F506008009A0 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8888CEA528C2F506008009A0 /* Keys.swift */; };
 		88AA052628C79D5400395A97 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA052528C79D5400395A97 /* Exercises.swift */; };
+		88D7E41628DC1D0A00E41E21 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7E41528DC1D0A00E41E21 /* AppSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		8888CEA028C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FIleManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		8888CEA528C2F506008009A0 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		88AA052528C79D5400395A97 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Exercises.swift; path = "Posture Check/Views/Exercises.swift"; sourceTree = SOURCE_ROOT; };
+		88D7E41528DC1D0A00E41E21 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		8888CE9D28C2AC66008009A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				88D7E41528DC1D0A00E41E21 /* AppSettings.swift */,
 				88505F4128C7BD7E0011BD7F /* Notifications.swift */,
 				88AA052528C79D5400395A97 /* Exercises.swift */,
 				8888CEA528C2F506008009A0 /* Keys.swift */,
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88D7E41628DC1D0A00E41E21 /* AppSettings.swift in Sources */,
 				88505F4228C7BD7E0011BD7F /* Notifications.swift in Sources */,
 				88667C1028BD23FE003816E0 /* ProfileView.swift in Sources */,
 				88667C1228BD25E2003816E0 /* ExerciseDetailView.swift in Sources */,

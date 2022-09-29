@@ -8,6 +8,21 @@
 import Foundation
 
 struct Keys {
+    // Objects
     static let exercises = "exercises"
     static let questionnaires = "questionnaires"
+    
+    // App Settings
+    static let isNewUser = "isNewUser"
+    static let dateInstalled = "dateInstalled"
+    static let appAccent = "appAccent"
+    static let activeFrom = "activeFrom"
+    static let activeUpTo = "activeUpTo"
+    
+    //Questionnaires Links
+    static let sociodemographic = ""
+    static let numericPainRatingScale = ""
+    static let postureAutoPerception = ""
+    static let autoDailyReport = ""
+    static let satisfaction = ""
 }

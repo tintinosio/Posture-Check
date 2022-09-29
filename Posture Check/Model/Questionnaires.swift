@@ -14,8 +14,14 @@ class Questionnaire: Codable, Identifiable, Equatable {
     var isCompleted: Bool
     var isAvailable: Bool
     let type: FormType
+//    let dateExpectedToBeCompleted: Date
     
-    init(name: String, url: URL, isCompleted: Bool = false, isAvailable: Bool = false, type: FormType) {
+    enum FormType: Codable {
+        case oneTime, everyFifteenDays, startAndEnd, daily, satisfaction
+    }
+    
+    init(id: UUID = UUID(), name: String, url: URL, isCompleted: Bool = false, isAvailable: Bool = true, type: FormType) {
+        self.id = id
         self.name = name
         self.url = url
         self.isCompleted = isCompleted
@@ -23,16 +29,12 @@ class Questionnaire: Codable, Identifiable, Equatable {
         self.type = type
     }
     
-    enum FormType: Codable {
-        case oneTime, everyFifteenDays, startAndEnd, daily, satisfaction
-    }
-    
     static func == (lhs: Questionnaire, rhs: Questionnaire) -> Bool {
         lhs.id == rhs.id
     }
     
     static var example: Questionnaire {
-        Questionnaire(name: "Test Questionnaire", url: URL(string: "https://www.apple.com")!, type: .oneTime)
+        Questionnaire(name: "Test Questionnaire", url: URL(string: "https://www.apple.com")!, type: FormType.oneTime)
     }
 }
 
@@ -48,7 +50,7 @@ class Questionnaire: Codable, Identifiable, Equatable {
             questionnaires = try JSONDecoder().decode([Questionnaire].self, from: data)
         } catch {
             questionnaires = Questionnaires.fillQuestionnaires()
-            // Add save below
+            save()
         }
     }
     
@@ -57,7 +59,7 @@ class Questionnaire: Codable, Identifiable, Equatable {
     /// - Returns: An array of questionnaires
     static func fillQuestionnaires() -> [Questionnaire] {
         return [
-            Questionnaire(name: "Sociodemographic", url: URL(string: "https://www.apple.com")!, isAvailable: true, type: .oneTime),
+            Questionnaire(name: "Sociodemographic", url: URL(string: "https://www.apple.com")!, type: .oneTime),
             Questionnaire(name: "Auto Perception of Posture", url: URL(string: "https://www.apple.com")!, type: .startAndEnd),
             Questionnaire(name: "Numeric Pain Rating Scale", url: URL(string: "https://www.apple.com")!, type: .everyFifteenDays),
             Questionnaire(name: "Daily Exercise Report", url: URL(string: "https://www.apple.com")!, type: .daily),
@@ -73,5 +75,28 @@ class Questionnaire: Codable, Identifiable, Equatable {
         objectWillChange.send()
         questionnaires[index].isAvailable = false
         questionnaires[index].isCompleted = true
+        save()
+    }
+    
+    func isAnyQuestionnaireAvailable() -> Bool {
+        var isQuestionnaireAvailable = false
+        
+        for questionnaire in questionnaires {
+            if questionnaire.isAvailable {
+                isQuestionnaireAvailable = true
+                return isQuestionnaireAvailable
+            }
+        }
+        
+        return isQuestionnaireAvailable
+    }
+    
+    func save() {
+        do {
+            let encodedQuestionnaires = try JSONEncoder().encode(questionnaires)
+            try encodedQuestionnaires.write(to: savePath, options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            fatalError("Error saving questionnaires")
+        }
     }
 }
