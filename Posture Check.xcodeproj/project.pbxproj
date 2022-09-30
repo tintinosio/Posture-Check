@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8810E76328E6A581001F3374 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810E76228E6A581001F3374 /* SettingsView.swift */; };
 		88505F4228C7BD7E0011BD7F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88505F4128C7BD7E0011BD7F /* Notifications.swift */; };
 		88582B8828BAD04300FA565F /* Posture_CheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88582B8728BAD04300FA565F /* Posture_CheckApp.swift */; };
 		88582B8A28BAD04300FA565F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88582B8928BAD04300FA565F /* ContentView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8810E76228E6A581001F3374 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		88505F4128C7BD7E0011BD7F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = "Posture Check/Views/Notifications.swift"; sourceTree = SOURCE_ROOT; };
 		88582B8428BAD04300FA565F /* Posture Check.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Posture Check.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88582B8728BAD04300FA565F /* Posture_CheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posture_CheckApp.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				88667C0D28BD2289003816E0 /* ExerciseListView.swift */,
 				88667C1128BD25E2003816E0 /* ExerciseDetailView.swift */,
 				88667C0F28BD23FE003816E0 /* ProfileView.swift */,
+				8810E76228E6A581001F3374 /* SettingsView.swift */,
 				88667C1328BD2738003816E0 /* QuestionnaireView.swift */,
 			);
 			path = Views;
@@ -201,6 +204,7 @@
 				88582B8A28BAD04300FA565F /* ContentView.swift in Sources */,
 				88667C0E28BD2289003816E0 /* ExerciseListView.swift in Sources */,
 				88667C1428BD2738003816E0 /* QuestionnaireView.swift in Sources */,
+				8810E76328E6A581001F3374 /* SettingsView.swift in Sources */,
 				8888CE9C28C2AB48008009A0 /* Questionnaires.swift in Sources */,
 				8888CEA128C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift in Sources */,
 				886C84C928C0626E000D3973 /* DeveloperView.swift in Sources */,

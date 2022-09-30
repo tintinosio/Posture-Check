@@ -14,13 +14,13 @@ class Notifications: ObservableObject {
         // Exercise Notifications
         case postureReminder, exercise, restReminder
         // Questionnaire Notifications
-        case hello
+        case oneTime, everyFifteenDays, startAndEnd, daily, satisfaction
     }
     
     func getNotificationTitle(of notificationType: NotificationType) -> String {
         switch notificationType {
         case .postureReminder:
-            return "Posture Reminder "
+            return "Posture Reminder"
         case .exercise:
             return "Exercise time 🧘🏻‍♂️"
         case .restReminder:

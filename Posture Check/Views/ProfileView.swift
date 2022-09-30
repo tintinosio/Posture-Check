@@ -13,10 +13,22 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @State private var showingButton = false
+    
     var body: some View {
         NavigationView {
             Text("Profile")
                 .navigationTitle("Profile")
+                .toolbar {
+                    Button {
+                        showingButton = true
+                    } label: {
+                        Image (systemName: "gear")
+                    }
+                }
+                .sheet(isPresented: $showingButton) {
+                    SettingsView()
+                }
         }
     }
 }
