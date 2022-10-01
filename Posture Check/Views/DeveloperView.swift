@@ -10,7 +10,8 @@ import SwiftUI
 struct DeveloperView: View {
     @EnvironmentObject var appSettings: AppSettings
     @State var accentColor: Color
-    
+    @EnvironmentObject var notification: Notifications
+
     var body: some View {
         NavigationView {
             VStack {
@@ -19,6 +20,18 @@ struct DeveloperView: View {
                 
                 Form {
                     ColorPicker("App Accent:", selection: $accentColor, supportsOpacity: false)
+                    
+                    Section("Notifications") {
+                        Button("Posture Reminder") {
+                            notification.devgenerateNotificationsOf(type: .postureReminder)
+                        }
+                        Button("Exercise Reminder") {
+                            notification.devgenerateNotificationOfExercise()
+                        }
+                        Button("Downtime Reminder") {
+                            notification.devgenerateNotificationsOf(type: .restReminder)
+                        }
+                    }
                 }
             }
             .navigationTitle("Developer Mode")

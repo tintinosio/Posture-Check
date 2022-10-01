@@ -29,6 +29,7 @@
 		882A7F9228E7CCFD000075F4 /* Upper trapezius.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A7F8828E7CCFC000075F4 /* Upper trapezius.gif */; };
 		882A7F9328E7CCFD000075F4 /* Isometric resistance.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A7F8928E7CCFD000075F4 /* Isometric resistance.gif */; };
 		882A7F9428E7CCFD000075F4 /* Neck extension.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A7F8A28E7CCFD000075F4 /* Neck extension.gif */; };
+		882A7F9628E80141000075F4 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A7F9528E80141000075F4 /* AppTabView.swift */; };
 		884BB27C28E6BDF500BE3A91 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB27B28E6BDF500BE3A91 /* View.swift */; };
 		884BB27E28E6C0CB00BE3A91 /* ConditionalQuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884BB27D28E6C0CB00BE3A91 /* ConditionalQuestionnaireView.swift */; };
 		88505F4228C7BD7E0011BD7F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88505F4128C7BD7E0011BD7F /* Notifications.swift */; };
@@ -72,6 +73,7 @@
 		882A7F8828E7CCFC000075F4 /* Upper trapezius.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Upper trapezius.gif"; sourceTree = "<group>"; };
 		882A7F8928E7CCFD000075F4 /* Isometric resistance.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Isometric resistance.gif"; sourceTree = "<group>"; };
 		882A7F8A28E7CCFD000075F4 /* Neck extension.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Neck extension.gif"; sourceTree = "<group>"; };
+		882A7F9528E80141000075F4 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		884BB27B28E6BDF500BE3A91 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		884BB27D28E6C0CB00BE3A91 /* ConditionalQuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalQuestionnaireView.swift; sourceTree = "<group>"; };
 		88505F4128C7BD7E0011BD7F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = "Posture Check/Views/Notifications.swift"; sourceTree = SOURCE_ROOT; };
@@ -148,6 +150,13 @@
 			path = "Advanced Exercises";
 			sourceTree = "<group>";
 		};
+		882A7F9728E813AA000075F4 /* Exercise Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Exercise Images";
+			sourceTree = "<group>";
+		};
 		88582B7B28BAD04300FA565F = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +176,7 @@
 		88582B8628BAD04300FA565F /* Posture Check */ = {
 			isa = PBXGroup;
 			children = (
+				882A7F9728E813AA000075F4 /* Exercise Images */,
 				88582B8B28BAD04400FA565F /* Assets.xcassets */,
 				8854142828E7894D007A6BC1 /* Posture-Check-Info.plist */,
 				88582B8728BAD04300FA565F /* Posture_CheckApp.swift */,
@@ -199,6 +209,7 @@
 				8810E76228E6A581001F3374 /* SettingsView.swift */,
 				88667C1328BD2738003816E0 /* QuestionnaireView.swift */,
 				882A7F6428E7C478000075F4 /* GIFImageViewWrapper.swift */,
+				882A7F9528E80141000075F4 /* AppTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -332,6 +343,7 @@
 				88582B8828BAD04300FA565F /* Posture_CheckApp.swift in Sources */,
 				8888CEA628C2F506008009A0 /* Keys.swift in Sources */,
 				88AA052628C79D5400395A97 /* Exercises.swift in Sources */,
+				882A7F9628E80141000075F4 /* AppTabView.swift in Sources */,
 				884BB27E28E6C0CB00BE3A91 /* ConditionalQuestionnaireView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

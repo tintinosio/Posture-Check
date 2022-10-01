@@ -14,38 +14,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var selection = 1
     @StateObject var questionnaires = Questionnaires()
     @StateObject var exercises = Exercises()
     @StateObject var notifications = Notifications()
     @StateObject var appSettings = AppSettings()
     
     var body: some View {
-        TabView(selection: $selection) {
-            ExerciseListView()
-                .tabItem {
-                    Label("Exercises", systemImage: "person.and.arrow.left.and.arrow.right")
-                }
-                .tag(0)
-            
-            ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person.fill")
-                }
-                .tag(1)
-            
-            ConditionalQuestionnaireView()
-                .tabItem {
-                    Label("Questionares", systemImage: "questionmark.circle.fill")
-                }
-                .tag(2)
-            
-            if (TARGET_OS_SIMULATOR != 0) {
-                DeveloperView(accentColor: appSettings.appAccent)
-                    .tabItem {
-                        Label("Developer Mode", systemImage: "hammer.circle")
-                    }
-                    .tag(3)
+        
+        Group {
+            if !notifications.userHasGrantedPermissions { // MARK: Fix me - Logic not working 
+                AppTabView()
+            } else {
+                NotificationRoadBlockView()
             }
         }
         .environmentObject(exercises)
@@ -60,6 +40,30 @@ struct ContentView: View {
 //                notifications.generateNotifications()
 //            }
             
+        }
+    }
+}
+
+struct NotificationRoadBlockView: View {
+    @EnvironmentObject var notifications: Notifications
+    
+    var body: some View {
+        VStack {
+            Image(systemName: "bell")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 75, height: 75)
+                .foregroundColor(.red)
+                .padding(.top)
+            
+            Text("This app requires the use of notifications to work. Please allow the use of notifications.")
+                .font(.title)
+            Spacer()
+            
+            Button("Allow") {
+                notifications.requestForAuthorization()
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 }
