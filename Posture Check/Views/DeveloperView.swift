@@ -11,11 +11,11 @@ struct DeveloperView: View {
     @EnvironmentObject var appSettings: AppSettings
     @State var accentColor: Color
     @EnvironmentObject var notification: Notifications
-
+    
     var body: some View {
         NavigationView {
             VStack {
-                Text("Place below controls to alter user progress for testing purpose.")
+                Text("Place below controls to alter user progress for testing purposes.")
                     .font(.largeTitle.bold())
                 
                 Form {
@@ -40,6 +40,9 @@ struct DeveloperView: View {
         .onChange(of: accentColor) { newValue in
             appSettings.appAccent = newValue
         }
+        .onAppear {
+            notification.requestForAuthorization()
+        }
     }
 }
 
@@ -49,3 +52,4 @@ struct DeveloperView_Previews: PreviewProvider {
             .environmentObject(AppSettings())
     }
 }
+

@@ -153,8 +153,24 @@
 		882A7F9728E813AA000075F4 /* Exercise Images */ = {
 			isa = PBXGroup;
 			children = (
+				882A7F9928E81442000075F4 /* Basic Exercises */,
+				882A7F9828E81433000075F4 /* Advanced Exercises */,
 			);
 			path = "Exercise Images";
+			sourceTree = "<group>";
+		};
+		882A7F9828E81433000075F4 /* Advanced Exercises */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Advanced Exercises";
+			sourceTree = "<group>";
+		};
+		882A7F9928E81442000075F4 /* Basic Exercises */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Basic Exercises";
 			sourceTree = "<group>";
 		};
 		88582B7B28BAD04300FA565F = {

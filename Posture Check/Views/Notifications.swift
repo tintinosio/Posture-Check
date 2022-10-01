@@ -169,7 +169,7 @@ class Notifications: ObservableObject {
             if settings.authorizationStatus == .authorized {
                 UNUserNotificationCenter.current().add(request)
             } else {
-                print("Notification could not be added")
+                print("Notification could not be added asking permisions")
             }
         }
     }
