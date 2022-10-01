@@ -72,7 +72,7 @@ struct FormView: View {
                 
                 HStack {
                     if !questionnaire.isCompleted {
-                        Text(questionnaire.isAvailable ? "Available" : "Available on day mm-dd-yy")
+                        Text(questionnaire.isAvailable ? "Available" : "Available on \(questionnaire.dateExpectedToBeCompleted.formatted(date: .complete, time: .omitted))")
                             .font(.callout.bold())
                             .foregroundColor(questionnaire.isAvailable ? .green : .primary)
                     }

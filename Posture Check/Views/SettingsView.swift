@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @State var time = Date()
-    @State private var  stretchingTime = 8.0
+    @State private var stretchingTime = 8.0
     
     var body: some View {
         NavigationView {
@@ -25,8 +25,7 @@ struct SettingsView: View {
             }
                 
                 Section {
-                    Stepper("\(stretchingTime.formatted()) hours", value: $stretchingTime, in: 1...12, step: 1.00)
-                    
+                    Stepper("\(stretchingTime.formatted()) hours", value: $stretchingTime, in: 6...9, step: 1.00)
                 }
             header: {
                 Text("Stretching time select:")

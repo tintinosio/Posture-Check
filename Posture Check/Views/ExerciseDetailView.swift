@@ -18,10 +18,13 @@ struct ExerciseDetailView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Image(exercise.icon)
-                    .resizable()
-                    .scaledToFit()
+//                Image(exercise.icon)
+//                    .resizable()
+//                    .scaledToFit()
                 
+                GifImage(exercise.name)
+                    .frame(height: geometry.size.height * 0.30)
+            
                 Text(exercise.name)
                     .font(.largeTitle.bold())
                 
@@ -49,7 +52,7 @@ struct ExerciseDetailView: View {
 struct ExerciseDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ExerciseDetailView(exercise: Exercise.example)
+            ExerciseDetailView(exercise: Exercises().exercises.first ?? Exercise.example)
         }
     }
 }

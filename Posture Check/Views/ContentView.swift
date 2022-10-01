@@ -14,7 +14,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var selection = 0
+    @State var selection = 1
     @StateObject var questionnaires = Questionnaires()
     @StateObject var exercises = Exercises()
     @StateObject var notifications = Notifications()
@@ -34,8 +34,7 @@ struct ContentView: View {
                 }
                 .tag(1)
             
-            QuestionnaireView()
-                .badge(questionnaires.isAnyQuestionnaireAvailable() ? "!" : "")
+            ConditionalQuestionnaireView()
                 .tabItem {
                     Label("Questionares", systemImage: "questionmark.circle.fill")
                 }

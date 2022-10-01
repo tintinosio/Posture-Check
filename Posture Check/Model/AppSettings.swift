@@ -28,13 +28,13 @@ import SwiftUI
     }
     
     // TODO: Consider 24 hour format
-    @Published var activeFrom: DateComponents {
+    @Published var activeFrom: Date {
         didSet {
             UserDefaults.standard.set(activeFrom, forKey: Keys.activeFrom)
         }
     }
     
-    @Published var activeUpTo: DateComponents {
+    @Published var activeUpTo: Date {
         didSet {
             UserDefaults.standard.set(activeUpTo, forKey: Keys.activeUpTo)
         }
@@ -54,11 +54,12 @@ import SwiftUI
         //        if let decodedIsNewUser = try? decoder.decode(Bool.self, from: isNewUser) {
         //            _isNewUser = State(initialValue: decodedIsNewUser)
         //        }
-        
         self.isNewUser = UserDefaults.standard.object(forKey: Keys.isNewUser) as? Bool ?? true
         self.dateInstalled = UserDefaults.standard.object(forKey: Keys.dateInstalled) as? Date ?? Date.now
         self.appAccent = UserDefaults.standard.object(forKey: Keys.appAccent) as? Color ?? .indigo
-        self.activeFrom = UserDefaults.standard.object(forKey: Keys.activeFrom) as? DateComponents ?? .init(hour: 8, minute: 0)
-        self.activeUpTo = UserDefaults.standard.object(forKey: Keys.activeUpTo) as? DateComponents ?? .init(hour: 5, minute: 0)
+        self.activeFrom = UserDefaults.standard.object(forKey: Keys.activeFrom) as? Date ?? Date.now
+        self.activeUpTo = UserDefaults.standard.object(forKey: Keys.activeUpTo) as? Date ?? Date.now.addingTimeInterval(8.0 * 3600)
+        
+        print("User Defaults Ready")
     }
 }
