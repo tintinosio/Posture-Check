@@ -48,6 +48,8 @@
 		8888CEA628C2F506008009A0 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8888CEA528C2F506008009A0 /* Keys.swift */; };
 		88AA052628C79D5400395A97 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA052528C79D5400395A97 /* Exercises.swift */; };
 		88D7E41628DC1D0A00E41E21 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7E41528DC1D0A00E41E21 /* AppSettings.swift */; };
+		88F31E4A28E950DB000FA8AA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F31E4928E950DB000FA8AA /* WebView.swift */; };
+		88F31E4C28E95EB1000FA8AA /* NotificationRoadBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F31E4B28E95EB1000FA8AA /* NotificationRoadBlockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +96,8 @@
 		8888CEA528C2F506008009A0 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		88AA052528C79D5400395A97 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Exercises.swift; path = "Posture Check/Views/Exercises.swift"; sourceTree = SOURCE_ROOT; };
 		88D7E41528DC1D0A00E41E21 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		88F31E4928E950DB000FA8AA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebView.swift; path = "Posture Check/Extensions/WebView.swift"; sourceTree = SOURCE_ROOT; };
+		88F31E4B28E95EB1000FA8AA /* NotificationRoadBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRoadBlockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +220,7 @@
 		8888CE9A28C2AB14008009A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				88F31E4928E950DB000FA8AA /* WebView.swift */,
 				88582B8928BAD04300FA565F /* ContentView.swift */,
 				884BB27D28E6C0CB00BE3A91 /* ConditionalQuestionnaireView.swift */,
 				886C84C828C0626E000D3973 /* DeveloperView.swift */,
@@ -226,6 +231,7 @@
 				88667C1328BD2738003816E0 /* QuestionnaireView.swift */,
 				882A7F6428E7C478000075F4 /* GIFImageViewWrapper.swift */,
 				882A7F9528E80141000075F4 /* AppTabView.swift */,
+				88F31E4B28E95EB1000FA8AA /* NotificationRoadBlockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88D7E41628DC1D0A00E41E21 /* AppSettings.swift in Sources */,
+				88F31E4A28E950DB000FA8AA /* WebView.swift in Sources */,
 				882A7F6528E7C478000075F4 /* GIFImageViewWrapper.swift in Sources */,
 				88505F4228C7BD7E0011BD7F /* Notifications.swift in Sources */,
 				884BB27C28E6BDF500BE3A91 /* View.swift in Sources */,
@@ -356,6 +363,7 @@
 				8888CE9C28C2AB48008009A0 /* Questionnaires.swift in Sources */,
 				8888CEA128C2B4EE008009A0 /* FIleManager-DocumentsDirectory.swift in Sources */,
 				886C84C928C0626E000D3973 /* DeveloperView.swift in Sources */,
+				88F31E4C28E95EB1000FA8AA /* NotificationRoadBlockView.swift in Sources */,
 				88582B8828BAD04300FA565F /* Posture_CheckApp.swift in Sources */,
 				8888CEA628C2F506008009A0 /* Keys.swift in Sources */,
 				88AA052628C79D5400395A97 /* Exercises.swift in Sources */,

@@ -39,31 +39,7 @@ struct ContentView: View {
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //                notifications.generateNotifications()
 //            }
-            
-        }
-    }
-}
-
-struct NotificationRoadBlockView: View {
-    @EnvironmentObject var notifications: Notifications
-    
-    var body: some View {
-        VStack {
-            Image(systemName: "bell")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 75, height: 75)
-                .foregroundColor(.red)
-                .padding(.top)
-            
-            Text("This app requires the use of notifications to work. Please allow the use of notifications.")
-                .font(.title)
-            Spacer()
-            
-            Button("Allow") {
-                notifications.requestForAuthorization()
-            }
-            .buttonStyle(.borderedProminent)
+            questionnaires.unlockQuestionnairesPending()
         }
     }
 }

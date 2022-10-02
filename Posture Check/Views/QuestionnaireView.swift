@@ -15,11 +15,17 @@ import SwiftUI
 struct QuestionnaireView: View {
     @EnvironmentObject var questionnaires: Questionnaires
     
+    var sortedQuestionnaires: [Questionnaire] {
+        questionnaires.questionnaires.sorted {
+            $0.dateExpectedToBeCompleted < $1.dateExpectedToBeCompleted
+        }
+    }
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 10) {
-                    ForEach(questionnaires.questionnaires, id:\.id) { questionnaire in
+                    ForEach(sortedQuestionnaires, id:\.id) { questionnaire in
                         FormView(questionnaire: questionnaire) { questionnaire in
                             questionnaires.markAsCompleted(questionnaire)
                         }
@@ -36,6 +42,7 @@ struct FormView: View {
     let questionnaire: Questionnaire
     @Environment(\.openURL) var openURL
     var markAsCompleted: (Questionnaire) -> Void
+    @State private var isShowingWebForm = false
     
     var body: some View {
         Group {
@@ -43,20 +50,19 @@ struct FormView: View {
                 HStack {
                     Text(questionnaire.name)
                         .font(.title2)
+                        .onTapGesture { // For debugging only 
+                            print(questionnaire.description)
+                        }
                     
                     Spacer()
-                    
                     
                     if questionnaire.isAvailable {
                         Image(systemName: "square.and.pencil")
                             .font(.largeTitle)
                             .foregroundColor(.blue)
                             .onTapGesture {
-                                openURL.callAsFunction(questionnaire.url)
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                                    markAsCompleted(questionnaire)
-                                }
+//                                openURL.callAsFunction(questionnaire.url)
+                                isShowingWebForm.toggle()
                             }
                             .offset(CGSize(width: 0.0, height: 15.0))
                     }
@@ -84,6 +90,15 @@ struct FormView: View {
             .background(.regularMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 15))
         }
+        .sheet(isPresented: $isShowingWebForm) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                markAsCompleted(questionnaire)
+            }
+        } content: {
+            WebView(url: questionnaire.url)
+        }
+
+
     }
 }
 

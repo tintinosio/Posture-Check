@@ -17,4 +17,14 @@ extension Date {
         let secondsInAHour = 3600
         return self.addingTimeInterval(Double(hour * secondsInAHour))
     }
+    
+    func dateWithoutHours() -> Date {
+        let currentCalendar = Calendar.current
+        
+        let components = currentCalendar.dateComponents([.year, .month, .day], from: self)
+        
+        let dateFromComponents = currentCalendar.date(from: components)
+        
+        return dateFromComponents ?? Date.now
+    }
 }
