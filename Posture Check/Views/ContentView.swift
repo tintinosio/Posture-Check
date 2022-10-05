@@ -22,7 +22,7 @@ struct ContentView: View {
     var body: some View {
         
         Group {
-            if !notifications.userHasGrantedPermissions { // MARK: Fix me - Logic not working 
+            if !notifications.userHasGrantedPermissions { // MARK: Fix me - Logic not working
                 AppTabView()
             } else {
                 NotificationRoadBlockView()

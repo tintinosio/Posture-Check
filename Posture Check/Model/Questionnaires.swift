@@ -40,7 +40,7 @@ class Questionnaire: Codable, Identifiable, Equatable {
         return """
         id: \(id)
         name: \(name)
-        url: \(url.formatted())
+
         isCompleted: \(isCompleted)
         isAvailable: \(isAvailable)
         type: \(type)
