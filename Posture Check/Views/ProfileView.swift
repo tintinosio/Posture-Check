@@ -13,6 +13,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var achievements: Achievements
     @State private var isShowingSettings = false
     @State private var isShowingPostureCheckUI = false
     
@@ -56,9 +57,11 @@ struct ProfileView: View {
                                     }
                                     .padding(.top)
                                     .accentColor(.indigo)
+                                    
                                 } else {
                                     // Fallback on earlier versions
-                                }
+                                    ProgressBar(value: .constant(0.5))
+                                    .frame(maxHeight: 15)                                }
                                 
                                 Divider()
                                     .frame(height: 15)
@@ -75,16 +78,8 @@ struct ProfileView: View {
                             }
                             
                             ScrollView(showsIndicators: false) {
-                                LazyVGrid(columns: columns) {
-                                    ForEach(1..<10, id: \.self) { _ in
-                                        VStack {
-                                            RoundedRectangle(cornerRadius: 5)
-                                                .frame(width: 100, height: 125)
-                                                .foregroundColor(.indigo)
-                                            Text("Title")
-                                                .font(.callout)
-                                        }
-                                    }
+                                ForEach(achievements.achievements, id: \.id) { achievement in
+                                    AchievementView(achievement: achievement)
                                 }
                             }
                         }
@@ -107,8 +102,39 @@ struct ProfileView: View {
     }
 }
 
+struct AchievementView: View {
+    var achievement: Achievement
+    var body: some View {
+        VStack {
+            Text(achievement.name)
+            HStack {
+                Group {
+                    if !achievement.isAchieved {
+                        Image("Chin tuck icon")
+                            .resizable()
+                            .clipShape(Circle())
+                            .shadow(radius: 10)
+                            .overlay {
+                                Circle().stroke(
+                                    Color.indigo,
+                                    lineWidth: 5
+                                )
+                            }
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 200)
+                        Spacer()
+                        Text(achievement.description).padding(.trailing)
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
+            .environmentObject(Achievements())
     }
 }

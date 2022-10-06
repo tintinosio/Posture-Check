@@ -46,7 +46,6 @@ class Questionnaire: Codable, Identifiable, Equatable {
         type: \(type)
         dateExpectedToBeCompleted: \(dateExpectedToBeCompleted.formatted())
         timesUnlockedPreviously: \(timesUnlockedPreviously)
-        
         """
     }
     

@@ -11,7 +11,8 @@ struct Keys {
     // Objects
     static let exercises = "exercises"
     static let questionnaires = "questionnaires"
-    
+    static let achievements = "achievements"
+
     // App Settings
     static let isNewUser = "isNewUser"
     static let dateInstalled = "dateInstalled"

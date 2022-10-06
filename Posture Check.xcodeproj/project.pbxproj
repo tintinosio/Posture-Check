@@ -38,6 +38,8 @@
 		88582B8A28BAD04300FA565F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88582B8928BAD04300FA565F /* ContentView.swift */; };
 		88582B8C28BAD04400FA565F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88582B8B28BAD04400FA565F /* Assets.xcassets */; };
 		88582B8F28BAD04400FA565F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88582B8E28BAD04400FA565F /* Preview Assets.xcassets */; };
+		8862F9BF28EE71A800E0BF8D /* Achivements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862F9BE28EE71A800E0BF8D /* Achivements.swift */; };
+		8862F9C528EE728000E0BF8D /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862F9C428EE728000E0BF8D /* ProgressBarView.swift */; };
 		88667C0E28BD2289003816E0 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88667C0D28BD2289003816E0 /* ExerciseListView.swift */; };
 		88667C1028BD23FE003816E0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88667C0F28BD23FE003816E0 /* ProfileView.swift */; };
 		88667C1228BD25E2003816E0 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88667C1128BD25E2003816E0 /* ExerciseDetailView.swift */; };
@@ -86,6 +88,8 @@
 		88582B8928BAD04300FA565F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		88582B8B28BAD04400FA565F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88582B8E28BAD04400FA565F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8862F9BE28EE71A800E0BF8D /* Achivements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achivements.swift; sourceTree = "<group>"; };
+		8862F9C428EE728000E0BF8D /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		88667C0D28BD2289003816E0 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
 		88667C0F28BD23FE003816E0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		88667C1128BD25E2003816E0 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 				88667C0F28BD23FE003816E0 /* ProfileView.swift */,
 				8810E76228E6A581001F3374 /* SettingsView.swift */,
 				88667C1328BD2738003816E0 /* QuestionnaireView.swift */,
+				8862F9C428EE728000E0BF8D /* ProgressBarView.swift */,
 				882A7F6428E7C478000075F4 /* GIFImageViewWrapper.swift */,
 				88F31E4B28E95EB1000FA8AA /* NotificationRoadBlockView.swift */,
 				88F31E4928E950DB000FA8AA /* WebView.swift */,
@@ -241,6 +246,7 @@
 			children = (
 				88D7E41528DC1D0A00E41E21 /* AppSettings.swift */,
 				88505F4128C7BD7E0011BD7F /* Notifications.swift */,
+				8862F9BE28EE71A800E0BF8D /* Achivements.swift */,
 				88AA052528C79D5400395A97 /* Exercises.swift */,
 				8888CEA528C2F506008009A0 /* Keys.swift */,
 				8888CE9B28C2AB48008009A0 /* Questionnaires.swift */,
@@ -357,6 +363,7 @@
 				88667C1228BD25E2003816E0 /* ExerciseDetailView.swift in Sources */,
 				88582B8A28BAD04300FA565F /* ContentView.swift in Sources */,
 				8854142728E77A39007A6BC1 /* Date.swift in Sources */,
+				8862F9C528EE728000E0BF8D /* ProgressBarView.swift in Sources */,
 				88667C0E28BD2289003816E0 /* ExerciseListView.swift in Sources */,
 				88667C1428BD2738003816E0 /* QuestionnaireView.swift in Sources */,
 				8810E76328E6A581001F3374 /* SettingsView.swift in Sources */,
@@ -367,6 +374,7 @@
 				88582B8828BAD04300FA565F /* Posture_CheckApp.swift in Sources */,
 				8888CEA628C2F506008009A0 /* Keys.swift in Sources */,
 				88AA052628C79D5400395A97 /* Exercises.swift in Sources */,
+				8862F9BF28EE71A800E0BF8D /* Achivements.swift in Sources */,
 				882A7F9628E80141000075F4 /* AppTabView.swift in Sources */,
 				884BB27E28E6C0CB00BE3A91 /* ConditionalQuestionnaireView.swift in Sources */,
 			);
