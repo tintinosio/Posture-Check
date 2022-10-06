@@ -15,6 +15,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var questionnaires = Questionnaires()
+    @StateObject var achievements = Achievements()
     @StateObject var exercises = Exercises()
     @StateObject var notifications = Notifications()
     @StateObject var appSettings = AppSettings()
@@ -29,6 +30,7 @@ struct ContentView: View {
             }
         }
         .environmentObject(exercises)
+        .environmentObject(achievements)
         .environmentObject(questionnaires)
         .environmentObject(notifications)
         .environmentObject(appSettings)

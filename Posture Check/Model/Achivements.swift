@@ -14,17 +14,13 @@ class Achievement: Codable, Equatable, Identifiable {
     //var icon: String
     //Array of strings that will contain the path to the 15 medal icons
     var isAchieved: Bool
-    var type: AchievementType
     
-    enum AchievementType: Codable {
-        case oneTime
-    }
+
     
-    init(id: UUID = UUID(), name: String, description: String, isAchieved: Bool, type: AchievementType) {
+    init(id: UUID = UUID(), name: String, description: String, isAchieved: Bool) {
         self.name = name
         self.description = description
         self.isAchieved = isAchieved
-        self.type = type
     }
     
     
@@ -38,12 +34,11 @@ class Achievement: Codable, Equatable, Identifiable {
         name: \(name)
         description: \(description)
         isAchieved: \(isAchieved)
-        type: \(type)
         """
     }
     
     static var example: Achievement {
-        Achievement(name: "The Posture Checker", description: "This achievement is not real and only for testing.", isAchieved: false, type: .oneTime)
+        Achievement(name: "The Posture Checker", description: "This achievement is not real and only for testing.", isAchieved: false)
     }
 }
 
@@ -64,21 +59,21 @@ class Achievement: Codable, Equatable, Identifiable {
     
     static func fillAchievements() -> [Achievement] {
         return [
-            Achievement(name: "Level 1", description: "Journey Starter", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level 2", description: "Beginner", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level 3", description: "Rookie", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level 4", description: "Patient", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level 5", description: "Intermediate", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level 6", description: "Persistent", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level 7", description: "Explorer", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level 8", description: "Dedicated", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level 9", description: "Fighter", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level 10", description: "Advanced", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level Bronze", description: "Grasshopper", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level Silver", description: "Expert", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level Sapphire", description: "Veteran", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level Diamond", description: "Master", isAchieved: false, type: .oneTime),
-            Achievement(name: "Level Gold", description: "Legend", isAchieved: false, type: .oneTime)
+            Achievement(name: "Level 1", description: "Journey Starter", isAchieved: false),
+            Achievement(name: "Level 2", description: "Beginner", isAchieved: false),
+            Achievement(name: "Level 3", description: "Rookie", isAchieved: false),
+            Achievement(name: "Level 4", description: "Patient", isAchieved: false),
+            Achievement(name: "Level 5", description: "Intermediate", isAchieved: false),
+            Achievement(name: "Level 6", description: "Persistent", isAchieved: false),
+            Achievement(name: "Level 7", description: "Explorer", isAchieved: false),
+            Achievement(name: "Level 8", description: "Dedicated", isAchieved: false),
+            Achievement(name: "Level 9", description: "Fighter", isAchieved: false),
+            Achievement(name: "Level 10", description: "Advanced", isAchieved: false),
+            Achievement(name: "Level Bronze", description: "Grasshopper", isAchieved: false),
+            Achievement(name: "Level Silver", description: "Expert", isAchieved: false),
+            Achievement(name: "Level Sapphire", description: "Veteran", isAchieved: false),
+            Achievement(name: "Level Diamond", description: "Master", isAchieved: false),
+            Achievement(name: "Level Gold", description: "Legend", isAchieved: false)
         ]
     }
     
