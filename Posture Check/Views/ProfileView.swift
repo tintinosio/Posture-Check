@@ -13,7 +13,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State private var showingButton = false
+    @State private var isShowingSettings = false
+    @State private var isShowingPostureCheckUI = false
     
     let columns = [
         GridItem(.adaptive(minimum: 150))
@@ -46,18 +47,18 @@ struct ProfileView: View {
                                     Spacer()
                                 }
                                 
-//                                if #available(iOS 16.0, *) {
-//                                    Gauge(value: 0.1) {
-//                                        HStack {
-//                                            Text("Study Progress")
-//                                            Spacer()
-//                                        }
-//                                    }
-//                                    .padding(.top)
-//                                    .accentColor(.indigo)
-//                                } else {
-//                                    // Fallback on earlier versions
-//                                }
+                                if #available(iOS 16.0, *) {
+                                    Gauge(value: 0.1) {
+                                        HStack {
+                                            Text("Study Progress")
+                                            Spacer()
+                                        }
+                                    }
+                                    .padding(.top)
+                                    .accentColor(.indigo)
+                                } else {
+                                    // Fallback on earlier versions
+                                }
                                 
                                 Divider()
                                     .frame(height: 15)
@@ -91,17 +92,17 @@ struct ProfileView: View {
                     }
                 }
             }
-                .navigationTitle("Profile")
-                .toolbar {
-                    Button {
-                        showingButton = true
-                    } label: {
-                        Image (systemName: "gear")
-                    }
+            .navigationTitle("Profile")
+            .toolbar {
+                Button {
+                    isShowingSettings = true
+                } label: {
+                    Image (systemName: "gear")
                 }
-                .sheet(isPresented: $showingButton) {
-                    SettingsView()
-                }
+            }
+            .sheet(isPresented: $isShowingSettings) {
+                SettingsView()
+            }
         }
     }
 }

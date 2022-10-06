@@ -13,6 +13,7 @@
 import SwiftUI
 
 struct ExerciseListView: View {
+    @EnvironmentObject var appSetting: AppSettings
     @EnvironmentObject var exercises: Exercises
     @State private var showAsGrid = true
     
@@ -48,6 +49,7 @@ struct ListView: View {
             return exercises.filter { $0.name.localizedCaseInsensitiveContains(searchText)}
         }
     }
+    
     var body: some View {
         List {
             ForEach(filteredExercises) { exercise in
@@ -98,46 +100,62 @@ struct GridView: View {
                     NavigationLink {
                         ExerciseDetailView(exercise: exercise)
                     } label: {
-                        VStack {
-                            ZStack {
-                                Image(exercise.icon)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                                    .padding([.top, .horizontal], 5)
-//                                    .frame(width: 175)
+                        ZStack(alignment: .center){
+                            VStack(alignment: .center) {
+                            
+                                ZStack {
+                                    Image(exercise.icon)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                                        .padding([.top, .horizontal], 5)
                                 
-                                if !exercise.isUnlocked {
-                                    Image(systemName: "lock")
-                                        .font(.largeTitle)
-                                        .foregroundColor(.primary)
+                              // if !exercise.isUnlocked {
+                               //    Image(systemName: "lock")
+                                 //       .font(.largeTitle)
+                                  //         .foregroundColor(.primary)
+                                        
+                                        
+                               // }
+                            
                                 }
+                            
+                                Text(exercise.name)
+                                  .font(.title3)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .frame(height: 40)
+                                    .foregroundColor(.white)
+                                    .padding(.bottom)
+                            
                             }
                             
-                            Text(exercise.name)
-//                                .font(.title3)
-                                .foregroundColor(.white)
-                                .padding(.bottom)
+                            if !exercise.isUnlocked {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .foregroundColor(.gray.opacity(0.6))
+                                Image(systemName: "lock")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .font(.largeTitle)
+                                    .foregroundColor(.black)
+                                    .frame(width: 80, height: 80)
+                            }
+                            
                         }
-//                        .frame(height: 175)
                         .background(.indigo)
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         .padding()
                     }
                     .disabled(!exercise.isUnlocked)
                 }
-//                .searchable(text: $searchText, prompt: "Search exercises")
             }
-            .padding(.horizontal)
         }
     }
 }
-
-
 
 struct ExerciseListView_Previews: PreviewProvider {
     static var previews: some View {
         ExerciseListView()
             .environmentObject(Exercises())
+            .environmentObject(AppSettings())
     }
 }

@@ -83,16 +83,10 @@ class Notifications: ObservableObject {
         content.subtitle = notificationSub
         content.sound = .default
         
-        for _ in 0...63 {
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
-            
-            
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            
-            
-            UNUserNotificationCenter.current().add(request)
-        }
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request)
     }
     
     func requestForAuthorization() {
@@ -107,9 +101,9 @@ class Notifications: ObservableObject {
         }
     }
     
-//    func notificationContentGenerator() -> UNMutableNotificationContent {
-//
-//    }
+    //    func notificationContentGenerator() -> UNMutableNotificationContent {
+    //
+    //    }
     // MARK: Developer Functions - Use the functions for testing only!
     
     func devgenerateNotificationsOf(type: NotificationType) {
@@ -133,7 +127,7 @@ class Notifications: ObservableObject {
             }
         }
     }
-
+    
     @MainActor func devgenerateNotificationOfExercise() {
         let center = UNUserNotificationCenter.current()
         
@@ -143,7 +137,7 @@ class Notifications: ObservableObject {
         
         let markAsCompleteAction = UNNotificationAction(identifier: "exerciseCompleted", title: "Mark as Completed")
         let viewGifAction = UNNotificationAction(identifier: "viewGif", title: "View exercise instructions")
-
+        
         let category = UNNotificationCategory(identifier: "exerciseCategory", actions: [markAsCompleteAction, viewGifAction], intentIdentifiers: [""])
         center.setNotificationCategories([category])
         
@@ -156,7 +150,7 @@ class Notifications: ObservableObject {
             print("Image not found!")
             return
         }
-       
+        
         let attachment = try! UNNotificationAttachment(identifier: exerciseForNotification.icon, url: imageURL, options: .none)
         
         content.attachments = [attachment]

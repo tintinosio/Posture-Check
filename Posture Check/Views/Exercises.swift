@@ -17,6 +17,7 @@ class Exercise: Codable, Equatable, Identifiable {
     var icon: String {
         name + " icon"
     }
+    var timesDoneToday = 0
     
     init(id: UUID = UUID(), name: String, isUnlocked: Bool, type: ExerciseType, description: String) {
         self.id = id
@@ -83,6 +84,14 @@ class Exercise: Codable, Equatable, Identifiable {
     
     func save() {
         
+    }
+    
+    func checkForPendingExerciseUnlock() {
+        var exercisesDone = 0
+        
+        for exercise in exercises {
+            exercisesDone
+        }
     }
     
     func markIsUnlocked(exercise: Exercise){

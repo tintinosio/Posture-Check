@@ -40,7 +40,7 @@ class Questionnaire: Codable, Identifiable, Equatable {
         return """
         id: \(id)
         name: \(name)
-
+        url: \(url.formatted())
         isCompleted: \(isCompleted)
         isAvailable: \(isAvailable)
         type: \(type)
@@ -101,35 +101,44 @@ class Questionnaire: Codable, Identifiable, Equatable {
     /// This function will populate the app questionnaires when is needed.
     /// - Returns: An array of questionnaires
     static func fillQuestionnaires() -> [Questionnaire] {
-        var questionnaires = [Questionnaire]()
-        
-        questionnaires = [
+        return  [
             Questionnaire(name: "Sociodemographic", url: URL(string: "https://www.apple.com")!, isAvailable: true, type: .oneTime, dateExpectedToBeCompleted: Date.now),
-            Questionnaire(name: "Auto Perception of Posture", url: URL(string: "https://www.apple.com")!, type: .startAndMonthly, dateExpectedToBeCompleted: Date.now),
-            Questionnaire(name: "Auto Perception of Posture", url: URL(string: "https://www.apple.com")!, type: .startAndMonthly, dateExpectedToBeCompleted: Date.now.modifyDateFor(days: 29)),
+            Questionnaire(name: "Numeric Pain Rating Scale", url: URL(string: "https://www.apple.com")!, isAvailable: true, type: .everyFifteenDays, dateExpectedToBeCompleted: Date.now),
+            Questionnaire(name: "Auto Perception of Posture", url: URL(string: "https://www.apple.com")!, isAvailable: true ,type: .startAndMonthly, dateExpectedToBeCompleted: Date.now),
+            Questionnaire(name: "Daily Exercise Report", url: URL(string: "https://www.apple.com")!, isAvailable: true ,type: .daily, dateExpectedToBeCompleted: Date.now),
             Questionnaire(name: "Satisfaction", url: URL(string: "https://www.apple.com")!, type: .oneTime, dateExpectedToBeCompleted: Date.now.modifyDateFor(days: 29))
-        ]
-        
-        // Creating Daily Questionnaires
-        //        for day in 0..<44 {
-        let dailyQuestionnaire = Questionnaire(name: "Daily Exercise Report", url: URL(string: "https://www.apple.com")!, type: .daily, dateExpectedToBeCompleted: Date.now)
-        questionnaires.append(dailyQuestionnaire)
-        //        }
-        
-        // Creating Numeric Pain Rating Questionnaires
-        for day in [0, 14, 29, 44] {
-            let questionnaire = Questionnaire(name: "Numeric Pain Rating Scale", url: URL(string: "https://www.apple.com")!, type: .everyFifteenDays, dateExpectedToBeCompleted: Date.now.modifyDateFor(days: day))
-            questionnaires.append(questionnaire)
+            ]
         }
-        
-        return questionnaires
+    
+    func maxUnlockAllowedFor(_ type: Questionnaire.FormType) -> Int {
+        var maxUnlockAllowed: Int
+
+        switch type {
+        case .oneTime:
+            maxUnlockAllowed = 1
+        case .everyFifteenDays:
+            maxUnlockAllowed = 4
+        case .startAndMonthly:
+            maxUnlockAllowed = 2
+        case .daily:
+            maxUnlockAllowed = 44
+        case .satisfaction:
+            maxUnlockAllowed = 1
+        }
+        return maxUnlockAllowed
     }
     
-    func unlockQuestionnairesPending() { // Posible Bug with one time questionnaire see bug in github
+    
+    func unlockQuestionnairesPending() {
         let currentDate = Date.now.dateWithoutHours()
+        
         for questionnaire in questionnaires {
             if questionnaire.dateExpectedToBeCompleted.dateWithoutHours() < currentDate || questionnaire.dateExpectedToBeCompleted.dateWithoutHours() == currentDate {
-                unlockQuestionnaire(questionnaire)
+                if questionnaire.timesUnlockedPreviously < maxUnlockAllowedFor(questionnaire.type) {
+                    if !questionnaire.isAvailable {
+                        unlockQuestionnaire(questionnaire)
+                    }
+                }
             }
         }
     }
@@ -143,22 +152,31 @@ class Questionnaire: Codable, Identifiable, Equatable {
         
         objectWillChange.send()
         
-        // MARK: TODO Don't let this code run if the questionnaire has been unlocked multiples times before using a limit.
-        switch questionnaire.type {
-        case .oneTime:
-            break
-        case .everyFifteenDays:
-            questionnaires[index].dateExpectedToBeCompleted = Date.now.modifyDateFor(days: 15)
-        case .startAndMonthly:
-            questionnaires[index].dateExpectedToBeCompleted = Date.now.modifyDateFor(days: 29)
-        case .daily:
-            questionnaires[index].dateExpectedToBeCompleted = Date.now.modifyDateFor(days: 1)
-        case .satisfaction:
-            break
+        if questionnaire.timesUnlockedPreviously != maxUnlockAllowedFor(questionnaire.type) {
+            switch questionnaire.type {
+            case .oneTime:
+                questionnaires[index].timesUnlockedPreviously += 1
+                
+            case .everyFifteenDays:
+                questionnaires[index].timesUnlockedPreviously += 1
+                questionnaires[index].dateExpectedToBeCompleted = Date.now.modifyDateFor(days: 15)
+                
+            case .startAndMonthly:
+                questionnaires[index].timesUnlockedPreviously += 1
+                questionnaires[index].dateExpectedToBeCompleted = Date.now.modifyDateFor(days: 29)
+                
+            case .daily:
+                questionnaires[index].timesUnlockedPreviously += 1
+                questionnaires[index].dateExpectedToBeCompleted = Date.now.modifyDateFor(days: 1)
+                
+            case .satisfaction:
+                questionnaires[index].timesUnlockedPreviously += 1
+            }
         }
         
         questionnaires[index].isAvailable = false
         questionnaires[index].isCompleted = true
+        
         print("Modified questionnaire: \(questionnaires[index].description)")
         save()
     }
