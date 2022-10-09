@@ -17,13 +17,25 @@ struct ExerciseListView: View {
     @EnvironmentObject var exercises: Exercises
     @State private var showAsGrid = true
     
+    var filteredExercises: [Exercise] {
+        let unlocked = exercises.exercises.filter {
+            $0.isUnlocked
+        }
+          
+        let locked = exercises.exercises.filter {
+            !$0.isUnlocked
+        }
+        
+        return unlocked + locked
+    }
+    
     var body: some View {
         NavigationView {
             Group {
                 if showAsGrid {
-                    GridView(exercises: exercises.exercises)
+                    GridView(exercises: filteredExercises)
                 } else {
-                    ListView(exercises: exercises.exercises)
+                    ListView(exercises: filteredExercises)
                 }
             }
             .navigationTitle("Exercise")
@@ -100,55 +112,69 @@ struct GridView: View {
                     NavigationLink {
                         ExerciseDetailView(exercise: exercise)
                     } label: {
-                        ZStack(alignment: .center){
-                            VStack(alignment: .center) {
-                            
-                                ZStack {
-                                    Image(exercise.icon)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                                        .padding([.top, .horizontal], 5)
-                                
-                              // if !exercise.isUnlocked {
-                               //    Image(systemName: "lock")
-                                 //       .font(.largeTitle)
-                                  //         .foregroundColor(.primary)
-                                        
-                                        
-                               // }
-                            
-                                }
-                            
-                                Text(exercise.name)
-                                  .font(.title3)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .frame(height: 40)
-                                    .foregroundColor(.white)
-                                    .padding(.bottom)
-                            
-                            }
-                            
-                            if !exercise.isUnlocked {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .foregroundColor(.gray.opacity(0.6))
-                                Image(systemName: "lock")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .font(.largeTitle)
-                                    .foregroundColor(.black)
-                                    .frame(width: 80, height: 80)
-                            }
-                            
-                        }
-                        .background(.indigo)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .padding()
+                        ExerciseView(exercise: exercise)
                     }
                     .disabled(!exercise.isUnlocked)
                 }
             }
         }
+    }
+}
+
+struct ExerciseView: View {
+    var exercise: Exercise
+    
+    init(exercise: Exercise) {
+        self.exercise = exercise
+        print(exercise.name + exercise.icon)
+    }
+    
+    var body: some View {
+        ZStack(alignment: .center){
+            VStack(alignment: .center) {
+            
+                ZStack {
+//                    Image(exercise.icon) // For some reason some images names cannot be found by SwiftUI Image View but always found by UIImage, this bug should be investigated on another release.
+                    Image(uiImage: UIImage(named: exercise.icon)!)
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .padding([.top, .horizontal], 5)
+                
+              // if !exercise.isUnlocked {
+               //    Image(systemName: "lock")
+                 //       .font(.largeTitle)
+                  //         .foregroundColor(.primary)
+                        
+                        
+               // }
+            
+                }
+            
+                Text(exercise.name)
+                  .font(.title3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(height: 40)
+                    .foregroundColor(.white)
+                    .padding(.bottom)
+            
+            }
+            
+            if !exercise.isUnlocked {
+                RoundedRectangle(cornerRadius: 5)
+                    .foregroundColor(.gray.opacity(0.6))
+                Image(systemName: "lock")
+                    .resizable()
+                    .scaledToFit()
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+                    .frame(width: 80, height: 80)
+            }
+            
+        }
+        .background(.indigo)
+        .clipShape(RoundedRectangle(cornerRadius: 5))
+        .padding()
     }
 }
 
