@@ -13,10 +13,10 @@
 import SwiftUI
 
 struct QuestionnaireView: View {
-    @EnvironmentObject var questionnaires: Questionnaires
+    @EnvironmentObject var user: User
     
     var sortedQuestionnaires: [Questionnaire] {
-        questionnaires.questionnaires.sorted {
+        user.questionnaires.questionnaires.sorted {
             $0.dateExpectedToBeCompleted < $1.dateExpectedToBeCompleted
         }
     }
@@ -27,7 +27,7 @@ struct QuestionnaireView: View {
                 VStack(spacing: 10) {
                     ForEach(sortedQuestionnaires, id:\.id) { questionnaire in
                         FormView(questionnaire: questionnaire) { questionnaire in
-                            questionnaires.markAsCompleted(questionnaire)
+                            user.questionnaires.markAsCompleted(questionnaire)
                         }
                     }
                 }
@@ -105,6 +105,6 @@ struct FormView: View {
 struct QuestionnaireView_Previews: PreviewProvider {
     static var previews: some View {
         QuestionnaireView()
-            .environmentObject(Questionnaires())
+            .environmentObject(User())
     }
 }

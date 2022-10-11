@@ -12,11 +12,10 @@
  */
 
 import SwiftUI
+import BackgroundTasks
 
 struct ContentView: View {
-    @StateObject var questionnaires = Questionnaires()
-    @StateObject var achievements = Achievements()
-    @StateObject var exercises = Exercises()
+    @StateObject var user = User()
     @StateObject var notifications = Notifications()
     @StateObject var appSettings = AppSettings()
     
@@ -29,9 +28,7 @@ struct ContentView: View {
                 NotificationRoadBlockView()
             }
         }
-        .environmentObject(exercises)
-        .environmentObject(achievements)
-        .environmentObject(questionnaires)
+        .environmentObject(user)
         .environmentObject(notifications)
         .environmentObject(appSettings)
         .accentColor(appSettings.appAccent)
@@ -43,7 +40,7 @@ struct ContentView: View {
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //                notifications.generateNotifications()
 //            }
-            questionnaires.unlockQuestionnairesPending()
+            user.questionnaires.unlockQuestionnairesPending()
         }
     }
 }

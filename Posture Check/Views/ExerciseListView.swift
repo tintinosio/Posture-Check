@@ -14,15 +14,15 @@ import SwiftUI
 
 struct ExerciseListView: View {
     @EnvironmentObject var appSetting: AppSettings
-    @EnvironmentObject var exercises: Exercises
+    @EnvironmentObject var user: User
     @State private var showAsGrid = true
     
     var filteredExercises: [Exercise] {
-        let unlocked = exercises.exercises.filter {
+        let unlocked = user.exercises.exercises.filter {
             $0.isUnlocked
         }
           
-        let locked = exercises.exercises.filter {
+        let locked = user.exercises.exercises.filter {
             !$0.isUnlocked
         }
         
@@ -181,7 +181,7 @@ struct ExerciseView: View {
 struct ExerciseListView_Previews: PreviewProvider {
     static var previews: some View {
         ExerciseListView()
-            .environmentObject(Exercises())
+            .environmentObject(User())
             .environmentObject(AppSettings())
     }
 }

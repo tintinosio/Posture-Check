@@ -13,7 +13,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var achievements: Achievements
+    @EnvironmentObject var user: User
     @State private var isShowingSettings = false
     @State private var isShowingPostureCheckUI = false
     
@@ -78,7 +78,7 @@ struct ProfileView: View {
                             }
                             
                             ScrollView(showsIndicators: false) {
-                                ForEach(achievements.achievements, id: \.id) { achievement in
+                                ForEach(user.achievements.achievements, id: \.id) { achievement in
                                     AchievementView(achievement: achievement)
                                 }
                             }
@@ -135,6 +135,6 @@ struct AchievementView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
-            .environmentObject(Achievements())
+            .environmentObject(User())
     }
 }

@@ -69,6 +69,7 @@
 		88CD15DD28F279740012FB55 /* Cervical semicircles icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15DC28F279740012FB55 /* Cervical semicircles icon.png */; };
 		88CD15E128F279880012FB55 /* Cervical Rotation icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15E028F279880012FB55 /* Cervical Rotation icon.png */; };
 		88CD15E328F329110012FB55 /* Cervical relaxation icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15E228F329110012FB55 /* Cervical relaxation icon.png */; };
+		88D26D9628F5CE8C00E8DA06 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D26D9528F5CE8C00E8DA06 /* User.swift */; };
 		88D7E41628DC1D0A00E41E21 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7E41528DC1D0A00E41E21 /* AppSettings.swift */; };
 		88F31E4A28E950DB000FA8AA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F31E4928E950DB000FA8AA /* WebView.swift */; };
 		88F31E4C28E95EB1000FA8AA /* NotificationRoadBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F31E4B28E95EB1000FA8AA /* NotificationRoadBlockView.swift */; };
@@ -139,6 +140,7 @@
 		88CD15DC28F279740012FB55 /* Cervical semicircles icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cervical semicircles icon.png"; sourceTree = "<group>"; };
 		88CD15E028F279880012FB55 /* Cervical Rotation icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cervical Rotation icon.png"; sourceTree = "<group>"; };
 		88CD15E228F329110012FB55 /* Cervical relaxation icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cervical relaxation icon.png"; sourceTree = "<group>"; };
+		88D26D9528F5CE8C00E8DA06 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		88D7E41528DC1D0A00E41E21 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		88F31E4928E950DB000FA8AA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebView.swift; path = "Posture Check/Extensions/WebView.swift"; sourceTree = SOURCE_ROOT; };
 		88F31E4B28E95EB1000FA8AA /* NotificationRoadBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRoadBlockView.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				882A7F6428E7C478000075F4 /* GIFImageViewWrapper.swift */,
 				88F31E4B28E95EB1000FA8AA /* NotificationRoadBlockView.swift */,
 				88F31E4928E950DB000FA8AA /* WebView.swift */,
+				88D26D9528F5CE8C00E8DA06 /* User.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				88582B8828BAD04300FA565F /* Posture_CheckApp.swift in Sources */,
 				8888CEA628C2F506008009A0 /* Keys.swift in Sources */,
 				88AA052628C79D5400395A97 /* Exercises.swift in Sources */,
+				88D26D9628F5CE8C00E8DA06 /* User.swift in Sources */,
 				8862F9BF28EE71A800E0BF8D /* Achivements.swift in Sources */,
 				882A7F9628E80141000075F4 /* AppTabView.swift in Sources */,
 				884BB27E28E6C0CB00BE3A91 /* ConditionalQuestionnaireView.swift in Sources */,
