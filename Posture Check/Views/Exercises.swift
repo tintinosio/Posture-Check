@@ -15,7 +15,7 @@ class Exercise: Codable, Equatable, Identifiable {
     var type: ExerciseType
     let description: String
     var timesDoneToday = 0
-    
+    var pendingToMarkAsCompleted = false // MARK: Investigate
     var icon: String {
         name + " icon"
     }

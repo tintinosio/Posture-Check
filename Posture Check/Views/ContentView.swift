@@ -33,13 +33,12 @@ struct ContentView: View {
         .environmentObject(appSettings)
         .accentColor(appSettings.appAccent)
         .onAppear { // NOTE: This code should be asked on a earlier view of the app and not here.
-//            notifications.requestForAuthorization()
-//            for exercise in exercises.exercises {
-//                exercises.markIsUnlocked(exercise: exercise)
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                notifications.generateNotifications()
-//            }
+            notifications.requestForAuthorization()
+            
+            Task {
+                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+                await notifications.generateNotifications()
+        }
             user.questionnaires.unlockQuestionnairesPending()
         }
     }

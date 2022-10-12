@@ -104,14 +104,17 @@ struct ProfileView: View {
 
 struct AchievementView: View {
     var achievement: Achievement
+    
     var body: some View {
         VStack {
-            Text(achievement.name)
+            Text(achievement.description)
             HStack {
                 Group {
                     if !achievement.isAchieved {
+                        
                         Image("Chin tuck icon")
                             .resizable()
+                            .scaledToFit()
                             .clipShape(Circle())
                             .shadow(radius: 10)
                             .overlay {
@@ -120,11 +123,13 @@ struct AchievementView: View {
                                     lineWidth: 5
                                 )
                             }
-                            .aspectRatio(contentMode: .fit)
                             .frame(width: 200)
+                        
                         Spacer()
-                        Text(achievement.description).padding(.trailing)
+                        
+                        Text(achievement.description)
                     }
+                    
                 }
                 Spacer()
             }

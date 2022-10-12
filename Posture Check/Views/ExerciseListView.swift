@@ -126,7 +126,6 @@ struct ExerciseView: View {
     
     init(exercise: Exercise) {
         self.exercise = exercise
-        print(exercise.name + exercise.icon)
     }
     
     var body: some View {

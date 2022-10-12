@@ -23,13 +23,19 @@ struct DeveloperView: View {
                     
                     Section("Notifications") {
                         Button("Posture Reminder") {
-                            notification.devgenerateNotificationsOf(type: .postureReminder)
+                            Task {
+                                 notification.devgenerateNotificationsOf(type: .postureReminder)
+                            }
                         }
                         Button("Exercise Reminder") {
-                            notification.devgenerateNotificationOfExercise()
+                            Task {
+                                await notification.devgenerateNotificationOfExercise()
+                            }
                         }
                         Button("Downtime Reminder") {
-                            notification.devgenerateNotificationsOf(type: .restReminder)
+                            Task {
+                                notification.devgenerateNotificationsOf(type: .restReminder)
+                            }
                         }
                     }
                 }
@@ -42,6 +48,9 @@ struct DeveloperView: View {
         }
         .onAppear {
             notification.requestForAuthorization()
+            let test1 = Calendar.current.date(from: appSettings.activeFrom)
+            let test2 = Calendar.current.date(from: appSettings.activeUpTo)
+            print("Active from: \(appSettings.activeFrom) Formatted: \(test1?.formatted())\n Active up to: \(appSettings.activeUpTo) Formatted: \(test2?.formatted())")
         }
     }
 }

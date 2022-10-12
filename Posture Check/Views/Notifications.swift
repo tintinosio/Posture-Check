@@ -38,7 +38,6 @@ class Notifications: ObservableObject {
                 status = false
             }
         }
-        
         return status
     }
     
@@ -58,7 +57,7 @@ class Notifications: ObservableObject {
     func getNotificationDescription(of notificationType: NotificationType) -> String {
         switch notificationType {
         case .postureReminder:
-            return "remember to maintain the phone at eye level to avoid tech neck syndrome"
+            return "Remember to maintain the phone at eye level to avoid tech neck syndrome"
         case .exercise:
             return "Long press the notification to mark as completed or view exercise instructions"
         case .restReminder:
@@ -68,25 +67,136 @@ class Notifications: ObservableObject {
         }
     }
     
-    func generateNotifications() {
-        generateNotificationsOf(type: .postureReminder)
-        //        generateNotificationsOf(type: .exercise)
-        //        generateNotificationsOf(type: .restReminder)
+    func generateNotifications() async {
+        await generateNotificationsOf(type: .postureReminder)
+        await generateNotificationsOf(type: .exercise)
+        await generateNotificationsOf(type: .restReminder)
     }
     
-    func generateNotificationsOf(type: NotificationType) {
-        let notificationTitle = getNotificationTitle(of: type)
-        let notificationSub = getNotificationDescription(of: type)
+    func generateNotificationsOf(type notificationType: NotificationType) async {
         
+        let content = await generateNotificationContentFor(notificationType)
+       
+        let triggers = await getTriggersFor(notificationType)
+
+        for trigger in triggers {
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            do {
+                try await UNUserNotificationCenter.current().add(request)
+            } catch {
+                fatalError("Could not schedule alerts")
+            }
+        }
+    }
+    
+    func generateNotificationContentFor(_ type: NotificationType) async -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
-        content.title = notificationTitle
-        content.subtitle = notificationSub
+        content.title = getNotificationTitle(of: type)
+        content.subtitle = getNotificationDescription(of: type)
         content.sound = .default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        if type == .exercise {
+            let exerciseForNotification = await Exercises().available.randomElement()! //MARK: Todo - check if you can avoid repeating exercises
+            
+            let completedAction = UNNotificationAction(identifier: "exerciseCompleted", title: "Mark as completed")
+            
+            let viewGifAction = UNNotificationAction(identifier: "viewGif", title: "View exercise instructions")
+            
+            let category = UNNotificationCategory(identifier: "exerciseCategory", actions: [completedAction, viewGifAction], intentIdentifiers: [""])
+            
+            UNUserNotificationCenter.current().setNotificationCategories([category])
+            
+            content.categoryIdentifier = "exerciseCategory"
+            
+            let imageURL = Bundle.main.url(forResource: exerciseForNotification.icon, withExtension: "png")!
+            
+            let attachment = try! UNNotificationAttachment(identifier: exerciseForNotification.icon, url: imageURL)
+            
+            content.attachments = [attachment]
+        }
         
-        UNUserNotificationCenter.current().add(request)
+        return content
+    }
+    
+    func getTriggersFor(_ type: NotificationType) async -> [UNCalendarNotificationTrigger] {
+        let startDate = await Calendar.autoupdatingCurrent.date(from: AppSettings().activeFrom) ?? Date.now
+        let endDate = await Calendar.autoupdatingCurrent.date(from: AppSettings().activeUpTo) ?? Date.now.addingTimeInterval(3600)
+        var triggers = [UNCalendarNotificationTrigger]()
+        
+        
+        switch type {
+        case .postureReminder: // Cada 25 minutos
+            for index in 1..<maxNotificationAllowedBetween(startDate, and: endDate, type: type) + 1 {
+                let offsetedDate = startDate.addingTimeInterval(Double(index) * Constants.postureReminderOffset)
+                print(offsetedDate.formatted())
+                let offsettedDateComponents = Calendar.autoupdatingCurrent.dateComponents([.hour, .minute], from: offsetedDate)
+                triggers.append(
+                    UNCalendarNotificationTrigger(dateMatching: offsettedDateComponents, repeats: true)
+                )
+            }
+            
+        case .exercise:
+            for index in 1..<maxNotificationAllowedBetween(startDate, and: endDate, type: type) + 1 {
+                let offsetedDate = startDate.addingTimeInterval(Double(index) * Constants.exerciseReminderOffset)
+                print(offsetedDate.formatted())
+                let offsettedDateComponents = Calendar.autoupdatingCurrent.dateComponents([.hour, .minute], from: offsetedDate)
+                triggers.append(
+                    UNCalendarNotificationTrigger(dateMatching: offsettedDateComponents, repeats: true)
+                )
+            }
+            
+        case .restReminder:
+            for index in 1..<maxNotificationAllowedBetween(startDate, and: endDate, type: type) + 1 {
+                let offsetedDate = startDate.addingTimeInterval(Double(index) * Constants.restReminderOffset)
+                print(offsetedDate.formatted())
+                let offsettedDateComponents = Calendar.autoupdatingCurrent.dateComponents([.hour, .minute], from: offsetedDate)
+                triggers.append(
+                    UNCalendarNotificationTrigger(dateMatching: offsettedDateComponents, repeats: true)
+                )
+            }
+            
+        case .oneTime:
+            break
+        case .everyFifteenDays:
+            break
+        case .startAndEnd:
+            break
+        case .daily:
+            break
+        case .satisfaction:
+            break
+        }
+        
+        return triggers
+    }
+    
+    func maxNotificationAllowedBetween(_ date1: Date, and date2: Date, type: NotificationType) -> Int {
+        var posibleNotification = 0
+        
+        switch type {
+        case .postureReminder:
+            posibleNotification = Int(DateInterval(start: date1, end: date2).duration / Constants.postureReminderOffset)
+            print("Posible \(posibleNotification) notifications for posture reminder.")
+            
+        case .exercise:
+            posibleNotification = Int(DateInterval(start: date1, end: date2).duration / Constants.exerciseReminderOffset)
+            print("Posible \(posibleNotification) notifications for exercise reminder.")
+        case .restReminder:
+            posibleNotification = Int(DateInterval(start: date1, end: date2).duration / Constants.restReminderOffset)
+            print("Posible \(posibleNotification) notifications for rest reminder.")
+        case .oneTime:
+            break
+        case .everyFifteenDays:
+            break
+        case .startAndEnd:
+            break
+        case .daily:
+            break
+        case .satisfaction:
+            break
+        }
+        
+        return posibleNotification
     }
     
     func requestForAuthorization() {
@@ -101,9 +211,6 @@ class Notifications: ObservableObject {
         }
     }
     
-    //    func notificationContentGenerator() -> UNMutableNotificationContent {
-    //
-    //    }
     // MARK: Developer Functions - Use the functions for testing only!
     
     func devgenerateNotificationsOf(type: NotificationType) {
@@ -128,12 +235,12 @@ class Notifications: ObservableObject {
         }
     }
     
-    @MainActor func devgenerateNotificationOfExercise() {
+     func devgenerateNotificationOfExercise() async {
         let center = UNUserNotificationCenter.current()
         
         let notificationTitle = getNotificationTitle(of: .exercise)
         let notificationSub = getNotificationDescription(of: .exercise)
-        let exerciseForNotification = Exercises().available.randomElement()!
+        let exerciseForNotification = await Exercises().available.randomElement()!
         
         let markAsCompleteAction = UNNotificationAction(identifier: "exerciseCompleted", title: "Mark as Completed")
         let viewGifAction = UNNotificationAction(identifier: "viewGif", title: "View exercise instructions")
@@ -147,6 +254,7 @@ class Notifications: ObservableObject {
         content.sound = .default
         content.categoryIdentifier = "exerciseCategory"
         guard let imageURL = Bundle.main.url(forResource: exerciseForNotification.icon, withExtension: "png") else {
+            print("Image called: \(exerciseForNotification.icon)")
             print("Image not found!")
             return
         }
@@ -163,7 +271,7 @@ class Notifications: ObservableObject {
             if settings.authorizationStatus == .authorized {
                 UNUserNotificationCenter.current().add(request)
             } else {
-                print("Notification could not be added asking permisions")
+                print("Notification could not be added asking permissions")
             }
         }
     }
@@ -184,7 +292,7 @@ class Notifications: ObservableObject {
 //            content.subtitle = notificationSub
 //            content.sound = UNNotificationSound.default
 //            content.categoryIdentifier = "exerciseCategory"
-//            guard let imageURL = Bundle.main.url(forResource: imageName, withExtension: "jpeg") else {
+//            guard let imageURL = Bundle.main.url(forResource: imageName, withExtension: "png") else {
 //                print("Image not found!")
 //                return
 //            }

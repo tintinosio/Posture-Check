@@ -13,7 +13,6 @@ struct GifImage: UIViewRepresentable {
 
     init(_ name: String) {
         self.name = name
-        print("Loading gif called: " + name)
     }
 
     func makeUIView(context: Context) -> WKWebView {

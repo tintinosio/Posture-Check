@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8810E76328E6A581001F3374 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810E76228E6A581001F3374 /* SettingsView.swift */; };
+		8814BF2828F759A50068FC7C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814BF2728F759A50068FC7C /* Constants.swift */; };
 		882A7F6528E7C478000075F4 /* GIFImageViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A7F6428E7C478000075F4 /* GIFImageViewWrapper.swift */; };
 		882A7F7528E7CBBC000075F4 /* Lumbar stretch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A7F6B28E7CBBA000075F4 /* Lumbar stretch.gif */; };
 		882A7F7628E7CBBC000075F4 /* Side bending.gif in Resources */ = {isa = PBXBuildFile; fileRef = 882A7F6C28E7CBBA000075F4 /* Side bending.gif */; };
@@ -50,9 +51,9 @@
 		8888CEA628C2F506008009A0 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8888CEA528C2F506008009A0 /* Keys.swift */; };
 		88AA052628C79D5400395A97 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA052528C79D5400395A97 /* Exercises.swift */; };
 		88CD15BB28F277E20012FB55 /* Upper trapezius icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15BA28F277E20012FB55 /* Upper trapezius icon.png */; };
-		88CD15BD28F277FC0012FB55 /* Upper back strech icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15BC28F277FC0012FB55 /* Upper back strech icon.png */; };
+		88CD15BD28F277FC0012FB55 /* Upper back stretch icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15BC28F277FC0012FB55 /* Upper back stretch icon.png */; };
 		88CD15BF28F278150012FB55 /* Trunck rotation icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15BE28F278150012FB55 /* Trunck rotation icon.png */; };
-		88CD15C128F278230012FB55 /* Trapezius strech icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15C028F278230012FB55 /* Trapezius strech icon.png */; };
+		88CD15C128F278230012FB55 /* Trapezius stretch icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15C028F278230012FB55 /* Trapezius stretch icon.png */; };
 		88CD15C328F278630012FB55 /* Thoracic extension icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15C228F278630012FB55 /* Thoracic extension icon.png */; };
 		88CD15C528F278C70012FB55 /* Side bending icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15C428F278C70012FB55 /* Side bending icon.png */; };
 		88CD15C728F278D60012FB55 /* Scapular in W icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 88CD15C628F278D60012FB55 /* Scapular in W icon.png */; };
@@ -77,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		8810E76228E6A581001F3374 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8814BF2728F759A50068FC7C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		882A7F6428E7C478000075F4 /* GIFImageViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageViewWrapper.swift; sourceTree = "<group>"; };
 		882A7F6B28E7CBBA000075F4 /* Lumbar stretch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Lumbar stretch.gif"; sourceTree = "<group>"; };
 		882A7F6C28E7CBBA000075F4 /* Side bending.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Side bending.gif"; sourceTree = "<group>"; };
@@ -121,9 +123,9 @@
 		8888CEA528C2F506008009A0 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		88AA052528C79D5400395A97 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Exercises.swift; path = "Posture Check/Views/Exercises.swift"; sourceTree = SOURCE_ROOT; };
 		88CD15BA28F277E20012FB55 /* Upper trapezius icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Upper trapezius icon.png"; sourceTree = "<group>"; };
-		88CD15BC28F277FC0012FB55 /* Upper back strech icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Upper back strech icon.png"; sourceTree = "<group>"; };
+		88CD15BC28F277FC0012FB55 /* Upper back stretch icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Upper back stretch icon.png"; sourceTree = "<group>"; };
 		88CD15BE28F278150012FB55 /* Trunck rotation icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Trunck rotation icon.png"; sourceTree = "<group>"; };
-		88CD15C028F278230012FB55 /* Trapezius strech icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Trapezius strech icon.png"; sourceTree = "<group>"; };
+		88CD15C028F278230012FB55 /* Trapezius stretch icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Trapezius stretch icon.png"; sourceTree = "<group>"; };
 		88CD15C228F278630012FB55 /* Thoracic extension icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thoracic extension icon.png"; sourceTree = "<group>"; };
 		88CD15C428F278C70012FB55 /* Side bending icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Side bending icon.png"; sourceTree = "<group>"; };
 		88CD15C628F278D60012FB55 /* Scapular in W icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Scapular in W icon.png"; sourceTree = "<group>"; };
@@ -229,8 +231,8 @@
 		882A7F9928E81442000075F4 /* Basic Exercises */ = {
 			isa = PBXGroup;
 			children = (
-				88CD15BC28F277FC0012FB55 /* Upper back strech icon.png */,
-				88CD15C028F278230012FB55 /* Trapezius strech icon.png */,
+				88CD15BC28F277FC0012FB55 /* Upper back stretch icon.png */,
+				88CD15C028F278230012FB55 /* Trapezius stretch icon.png */,
 				88CD15D428F279440012FB55 /* Head rotation and Chin tuck icon.png */,
 				88CD15E028F279880012FB55 /* Cervical Rotation icon.png */,
 				88CD15CE28F279120012FB55 /* Lumbar stretch icon.png */,
@@ -299,7 +301,6 @@
 				882A7F6428E7C478000075F4 /* GIFImageViewWrapper.swift */,
 				88F31E4B28E95EB1000FA8AA /* NotificationRoadBlockView.swift */,
 				88F31E4928E950DB000FA8AA /* WebView.swift */,
-				88D26D9528F5CE8C00E8DA06 /* User.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,8 +312,10 @@
 				88505F4128C7BD7E0011BD7F /* Notifications.swift */,
 				8862F9BE28EE71A800E0BF8D /* Achivements.swift */,
 				88AA052528C79D5400395A97 /* Exercises.swift */,
+				88D26D9528F5CE8C00E8DA06 /* User.swift */,
 				8888CEA528C2F506008009A0 /* Keys.swift */,
 				8888CE9B28C2AB48008009A0 /* Questionnaires.swift */,
+				8814BF2728F759A50068FC7C /* Constants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -403,8 +406,8 @@
 				882A7F9328E7CCFD000075F4 /* Isometric resistance.gif in Resources */,
 				882A7F7A28E7CBBC000075F4 /* Neck Flexion.gif in Resources */,
 				882A7F7D28E7CBBC000075F4 /* Chin tuck.gif in Resources */,
-				88CD15BD28F277FC0012FB55 /* Upper back strech icon.png in Resources */,
-				88CD15C128F278230012FB55 /* Trapezius strech icon.png in Resources */,
+				88CD15BD28F277FC0012FB55 /* Upper back stretch icon.png in Resources */,
+				88CD15C128F278230012FB55 /* Trapezius stretch icon.png in Resources */,
 				882A7F7E28E7CBBC000075F4 /* Scapular Retraction.gif in Resources */,
 				88CD15C928F278E30012FB55 /* Scapular Retraction icon.png in Resources */,
 				882A7F7928E7CBBC000075F4 /* Head rotation and Chin tuck.gif in Resources */,
@@ -437,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8814BF2828F759A50068FC7C /* Constants.swift in Sources */,
 				88D7E41628DC1D0A00E41E21 /* AppSettings.swift in Sources */,
 				88F31E4A28E950DB000FA8AA /* WebView.swift in Sources */,
 				882A7F6528E7C478000075F4 /* GIFImageViewWrapper.swift in Sources */,

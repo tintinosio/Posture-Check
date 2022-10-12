@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var appSettings: AppSettings
+    @State var from: Date
+    @State var UpTo: Date
     
-    @State var time = Date()
-    @State private var stretchingTime = 8.0
-    
+    init() {
+        let appSettings = AppSettings()
+        _from = State(initialValue: Calendar.autoupdatingCurrent.date(from: appSettings.activeFrom) ?? Date.now)
+        _UpTo = State(initialValue: Calendar.autoupdatingCurrent.date(from: appSettings.activeUpTo) ?? Date.now)
+    }
+    //MARK: Fix/Add saving to UserDefaults and remove previous notifications and create new ones.
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    DatePicker(selection: $time, displayedComponents: .hourAndMinute, label: { SettingsRowView( title: "Start Stretching", systemImageName: "bell")
+                    DatePicker(selection: $from, displayedComponents: .hourAndMinute, label: { SettingsRowView( title: "Start Stretching", systemImageName: "bell")
                     })
                 }
             header: {
@@ -25,7 +31,8 @@ struct SettingsView: View {
             }
                 
                 Section {
-                    Stepper("\(stretchingTime.formatted()) hours", value: $stretchingTime, in: 6...9, step: 1.00)
+//                    Stepper("\(stretchingTime.formatted()) hours", value: $stretchingTime, in: 6...9, step: 1.00)
+                    DatePicker("End", selection: $UpTo, displayedComponents: .hourAndMinute)
                 }
             header: {
                 Text("Stretching time select:")
@@ -33,6 +40,12 @@ struct SettingsView: View {
             }
             }
             .navigationTitle(Text("Settings"))
+        }
+        .onChange(of: from) { newValue in
+            print("Cambie from")
+        }
+        .onChange(of: UpTo) { newValue in
+            print("Cambie upto")
         }
     }
 }
@@ -52,5 +65,6 @@ struct SettingsRowView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(AppSettings())
     }
 }
