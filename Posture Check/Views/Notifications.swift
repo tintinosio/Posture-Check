@@ -44,11 +44,14 @@ class Notifications: ObservableObject {
     func getNotificationTitle(of notificationType: NotificationType) -> String {
         switch notificationType {
         case .postureReminder:
-            return "Posture Reminder"
+            return Constants.postureRemindersTitles.randomElement() ?? "Posture Reminder"
+            
         case .exercise:
-            return "Exercise time 🧘🏻‍♂️"
+            return Constants.exercisesRemindersTitles.randomElement() ?? "Exercise time 🧘🏻‍♂️"
+            
         case .restReminder:
-            return "Rest Reminder 💤"
+            return Constants.restReminderTitles.randomElement() ?? "Rest Reminder 💤"
+            
         default:
             return "" // To be set
         }
@@ -57,11 +60,14 @@ class Notifications: ObservableObject {
     func getNotificationDescription(of notificationType: NotificationType) -> String {
         switch notificationType {
         case .postureReminder:
-            return "Remember to maintain the phone at eye level to avoid tech neck syndrome"
+            return Constants.postureRemindersDescriptions.randomElement() ?? "Remember to maintain the phone at eye level to avoid tech neck syndrome"
+            
         case .exercise:
-            return "Long press the notification to mark as completed or view exercise instructions"
+            return Constants.exercisesRemindersDescription.randomElement() ?? "Long press the notification to mark as completed or view exercise instructions"
+            
         case .restReminder:
-            return "A rest of 20 minutes is recommended for this period of usage"
+            return Constants.restReminderDescription.randomElement() ?? "A rest of 20 minutes is recommended for this period of usage"
+            
         default:
             return "A new questionnaire is available!"
         }
@@ -123,9 +129,8 @@ class Notifications: ObservableObject {
         let endDate = await Calendar.autoupdatingCurrent.date(from: AppSettings().activeUpTo) ?? Date.now.addingTimeInterval(3600)
         var triggers = [UNCalendarNotificationTrigger]()
         
-        
         switch type {
-        case .postureReminder: // Cada 25 minutos
+        case .postureReminder:
             for index in 1..<maxNotificationAllowedBetween(startDate, and: endDate, type: type) + 1 {
                 let offsetedDate = startDate.addingTimeInterval(Double(index) * Constants.postureReminderOffset)
                 print(offsetedDate.formatted())
@@ -172,18 +177,25 @@ class Notifications: ObservableObject {
     
     func maxNotificationAllowedBetween(_ date1: Date, and date2: Date, type: NotificationType) -> Int {
         var posibleNotification = 0
-        
+        let firstDate = date1
+        var secondDate = date2
+                
+        if firstDate > secondDate { // 11pm > 8am true
+            secondDate = secondDate.modifyDateFor(days: 1)
+        }
+    
         switch type {
         case .postureReminder:
-            posibleNotification = Int(DateInterval(start: date1, end: date2).duration / Constants.postureReminderOffset)
+            posibleNotification = abs(Int(DateInterval(start: firstDate, end: secondDate).duration / Constants.postureReminderOffset))
             print("Posible \(posibleNotification) notifications for posture reminder.")
             
         case .exercise:
-            posibleNotification = Int(DateInterval(start: date1, end: date2).duration / Constants.exerciseReminderOffset)
+            posibleNotification = abs(Int(DateInterval(start: firstDate, end: secondDate).duration / Constants.exerciseReminderOffset))
             print("Posible \(posibleNotification) notifications for exercise reminder.")
         case .restReminder:
-            posibleNotification = Int(DateInterval(start: date1, end: date2).duration / Constants.restReminderOffset)
+            posibleNotification = abs(Int(DateInterval(start: firstDate, end: secondDate).duration / Constants.restReminderOffset))
             print("Posible \(posibleNotification) notifications for rest reminder.")
+            
         case .oneTime:
             break
         case .everyFifteenDays:
@@ -203,6 +215,10 @@ class Notifications: ObservableObject {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
                 print("User allowed notifications")
+                Task {
+                    UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+                    await self.generateNotifications()
+                }
             } else if let error = error {
                 print(error.localizedDescription)
             } else {

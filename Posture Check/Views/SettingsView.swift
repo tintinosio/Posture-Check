@@ -42,9 +42,13 @@ struct SettingsView: View {
             .navigationTitle(Text("Settings"))
         }
         .onChange(of: from) { newValue in
+            let dateComponents = Calendar.autoupdatingCurrent.dateComponents([.hour, .minute], from: from)
+            print(dateComponents)
             print("Cambie from")
         }
         .onChange(of: UpTo) { newValue in
+            let dateComponents = Calendar.autoupdatingCurrent.dateComponents([.hour, .minute], from: from)
+            print(dateComponents)
             print("Cambie upto")
         }
     }

@@ -36,8 +36,7 @@ struct ContentView: View {
             notifications.requestForAuthorization()
             
             Task {
-                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-                await notifications.generateNotifications()
+                await print(UNUserNotificationCenter.current().pendingNotificationRequests())
         }
             user.questionnaires.unlockQuestionnairesPending()
         }
